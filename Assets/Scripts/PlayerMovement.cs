@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 6f;            // Movement speed of the player
-    public float turnSpeed = 20f;       // Turning speed of the player
+    public float speed = 6f; //Movement speed
+    public float turnSpeed = 20f;
 
-    Rigidbody m_Rigidbody;              // Rigidbody component attached to the player
-    Vector3 m_Movement;                 // Stores the movement direction
-    Quaternion m_Rotation = Quaternion.identity; // Stores the rotation of the player
+    Rigidbody m_Rigidbody;
+    Vector3 m_Movement;                
+    Quaternion m_Rotation = Quaternion.identity; 
 
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>(); // Get the Rigidbody component
+        m_Rigidbody = GetComponent<Rigidbody>(); 
+        m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
     }
 
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal"); // Get horizontal input
-        float vertical = Input.GetAxis("Vertical");     // Get vertical input
+        float horizontal = Input.GetAxis("Horizontal"); 
+        float vertical = Input.GetAxis("Vertical");    
 
-        m_Movement.Set(horizontal, 0f, vertical);       // Set movement vector based on input
-        m_Movement.Normalize();                         // Normalize the movement vector
+        m_Movement.Set(horizontal, 0f, vertical);  
+        m_Movement.Normalize();  
 
         // Check if there is input from the user
         bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
@@ -33,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
         m_Rotation = Quaternion.LookRotation(desiredForward);
 
-        // Call the Move method to move and rotate the player
         Move();
     }
 
@@ -41,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * speed * Time.deltaTime); // Move the player
-        m_Rigidbody.MoveRotation(m_Rotation); // Rotate the player
+        m_Rigidbody.MoveRotation(m_Rotation); 
     }
 }
-
