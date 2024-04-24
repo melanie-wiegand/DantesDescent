@@ -44,4 +44,12 @@ public class PlayerMovement : MonoBehaviour
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * speed * Time.deltaTime); // Move the player
         m_Rigidbody.MoveRotation(m_Rotation); 
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Collectable"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }
