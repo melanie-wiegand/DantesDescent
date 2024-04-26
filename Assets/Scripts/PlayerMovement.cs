@@ -32,8 +32,8 @@ public class PlayerMovement : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
 
         // Rotate towards the direction of movement
-        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
-        m_Rotation = Quaternion.LookRotation(desiredForward);
+        //Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.deltaTime, 0f);
+        //m_Rotation = Quaternion.LookRotation(desiredForward);
 
         Move();
     }
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public void Move()
     {
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * speed * Time.deltaTime); // Move the player
-        m_Rigidbody.MoveRotation(m_Rotation); 
+        //m_Rigidbody.MoveRotation(m_Rotation); 
     }
 
     void OnTriggerEnter(Collider other)
