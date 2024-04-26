@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Move the player using Rigidbody
-    void Move()
+    public void Move()
     {
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * speed * Time.deltaTime); // Move the player
         m_Rigidbody.MoveRotation(m_Rotation); 
