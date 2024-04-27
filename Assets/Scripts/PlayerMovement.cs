@@ -45,11 +45,18 @@ public class PlayerMovement : MonoBehaviour
         //m_Rigidbody.MoveRotation(m_Rotation); 
     }
 
+    public AudioSource audioSource;
+
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Collectable"))
         {
             other.gameObject.SetActive(false);
+
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
         }
     }
 }
