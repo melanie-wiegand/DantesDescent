@@ -29,18 +29,40 @@ public class Survival : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Hunger and temperature decrease over time
         Hunger = Hunger - HungerOT * Time.deltaTime;
         Temperature = Temperature - TempOT * Time.deltaTime;
 
         UpdateSliders();
 
+        // Adjust temperature if the player is near a campfire
         if(firePlayerChecker.IsPlayerInRange())
         {
             TempOT = -1f;
+            // Check for max temperature
+            if(Temperature >= MaxTemp)
+                Temperature = 100;
         }
-        else
+        else if(!firePlayerChecker.IsPlayerInRange())
         {
             TempOT = 0.5f;
+        }
+
+        // Max hunger
+        if(Hunger >= 100)
+        {
+            Hunger = 100;
+        }
+
+        // Min hunger and temperature (adjust later to death screens)
+        if(Hunger <= 0)
+        {
+            Hunger = 0;
+        }
+
+        if(Temperature <= 0)
+        {
+            Temperature = 0;
         }
     }
 

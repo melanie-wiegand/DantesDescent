@@ -14,17 +14,15 @@ public class FirePlayerChecker : MonoBehaviour
     {
         // Check if the player is within the detection radius
         playerInRange = Physics.CheckSphere(transform.position, detectionRadius, playerLayer);
-        if (playerInRange)
-        {
-            Debug.Log("Player is within campfire radius.");
-        }
     }
 
+    // Returns a boolean for playerInRange
     public bool IsPlayerInRange()
     {
         return playerInRange;
     }
 
+    // Draws the radius on the scene
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
