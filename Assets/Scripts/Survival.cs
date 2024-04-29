@@ -18,7 +18,8 @@ public class Survival : MonoBehaviour
     public Slider TempSlider;
 
     public FirePlayerChecker firePlayerChecker;
-
+    public Transform player;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class Survival : MonoBehaviour
 
         UpdateSliders();
 
+ //       firePlayerChecker = GetNearestFire();
         // Adjust temperature if the player is near a campfire
         if(firePlayerChecker.IsPlayerInRange())
         {
@@ -77,13 +79,23 @@ public class Survival : MonoBehaviour
         this.Hunger = this.Hunger + amount;
     }
 
-    public void TempWarm()
+/*
+    GameObject GetNearestFire(GameObject player, GameObject[] fires)
     {
-        TempOT = -1f;
-    }
+        GameObject nearestFire = null;
+        float nearestDistance = float.MaxValue;
 
-    public void TempCool()
-    {
-        TempOT = 0.5f;
+        for(int i = 0; i < fires.length; i++)
+        {
+            float distance = (fires[i].transform.position - player.transform.position).sqrMagnitude;
+
+            if(distance < nearestDistance)
+            {
+                nearestFire = fires[i];
+                nearestDistance = distance;
+            }
+        }
+        return nearestFire;
     }
+*/
 }

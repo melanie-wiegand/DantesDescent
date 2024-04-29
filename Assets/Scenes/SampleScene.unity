@@ -984,6 +984,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1576268415}
+  - {fileID: 1734643228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &680627250
@@ -2089,6 +2090,80 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1734643227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 600188287}
+    m_Modifications:
+    - target: {fileID: 2425141686864966214, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 403102280}
+    - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: TempSlider
+      value: 
+      objectReference: {fileID: 467908899}
+    - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: HungerSlider
+      value: 
+      objectReference: {fileID: 586326330}
+    - target: {fileID: 3422345775727166059, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_Name
+      value: Campfire (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+--- !u!4 &1734643228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5917365979087033015, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+  m_PrefabInstance: {fileID: 1734643227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1820302681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2379836018916481004, guid: 7e00c46c0bbfa4775b4e6a233bb1e133, type: 3}
@@ -2421,6 +2496,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600188287}
     m_Modifications:
+    - target: {fileID: 2425141686864966214, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 403102280}
     - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
       propertyPath: TempSlider
       value: 
