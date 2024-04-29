@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 6f;
 
 
-    public float lookSpeed = 2f;
+    public float lookSpeed = 1f;
     public float lookXLimit = 45f;
 
 
