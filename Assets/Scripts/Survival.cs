@@ -17,6 +17,8 @@ public class Survival : MonoBehaviour
     public float TempOT = 0.5f;
     public Slider TempSlider;
 
+    public FirePlayerChecker firePlayerChecker;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +33,35 @@ public class Survival : MonoBehaviour
         Temperature = Temperature - TempOT * Time.deltaTime;
 
         UpdateSliders();
+
+        if(firePlayerChecker.IsPlayerInRange())
+        {
+            TempOT = -1f;
+        }
+        else
+        {
+            TempOT = 0.5f;
+        }
     }
 
     void UpdateSliders()
     {
         HungerSlider.value = Hunger / MaxHunger;
         TempSlider.value = Temperature / MaxTemp;
+    }
+
+    public void AddToHunger(int amount)
+    {
+        this.Hunger = this.Hunger + amount;
+    }
+
+    public void TempWarm()
+    {
+        TempOT = -1f;
+    }
+
+    public void TempCool()
+    {
+        TempOT = 0.5f;
     }
 }

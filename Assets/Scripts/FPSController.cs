@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Survival))]
 public class PlayerController : MonoBehaviour
 {
     public Camera playerCamera;
@@ -20,13 +21,18 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
 
+    public AudioSource audioSource;
     
     CharacterController characterController;
+
+    Survival survival;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); 
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         characterController = GetComponent<CharacterController>();
+        survival = GetComponent<Survival>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -57,5 +63,19 @@ public class PlayerController : MonoBehaviour
         }
 
         #endregion
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Collectable"))
+        {
+            other.gameObject.SetActive(false);
+            survival.AddToHunger(5);
+
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+        }
     }
 }
