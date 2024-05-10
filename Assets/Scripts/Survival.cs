@@ -17,8 +17,8 @@ public class Survival : MonoBehaviour
     public float TempOT = 0.5f;
     public Slider TempSlider;
 
-    public FirePlayerChecker firePlayerChecker;
-    public Transform player;
+ //   public FirePlayerChecker firePlayerChecker;
+ //   public Transform player;
  
     // Start is called before the first frame update
     void Start()
@@ -36,18 +36,11 @@ public class Survival : MonoBehaviour
 
         UpdateSliders();
 
- //       firePlayerChecker = GetNearestFire();
-        // Adjust temperature if the player is near a campfire
-        if(firePlayerChecker.IsPlayerInRange())
+        // Cap the maximum temperature when player is warming up
+        if(TempOT == -1f)
         {
-            TempOT = -1f;
-            // Check for max temperature
             if(Temperature >= MaxTemp)
                 Temperature = 100;
-        }
-        else if(!firePlayerChecker.IsPlayerInRange())
-        {
-            TempOT = 0.5f;
         }
 
         // Max hunger
@@ -62,40 +55,34 @@ public class Survival : MonoBehaviour
             Hunger = 0;
         }
 
+        // Cap minimum temperature (adjust later to death screens)
         if(Temperature <= 0)
         {
             Temperature = 0;
         }
     }
+    // Changes the temperature over time to warm the player
+    public void UpdateTempWarm()
+    {
+        TempOT = -1f;
+    }
 
+    // Changes the temperature over time to cool the player
+    public void UpdateTempCool()
+    {
+        TempOT = 0.5f;
+    }
+
+    // Updates the hunger and temperature sliders
     void UpdateSliders()
     {
         HungerSlider.value = Hunger / MaxHunger;
         TempSlider.value = Temperature / MaxTemp;
     }
 
+    // Increases hunger by amount
     public void AddToHunger(int amount)
     {
         this.Hunger = this.Hunger + amount;
     }
-
-/*
-    GameObject GetNearestFire(GameObject player, GameObject[] fires)
-    {
-        GameObject nearestFire = null;
-        float nearestDistance = float.MaxValue;
-
-        for(int i = 0; i < fires.length; i++)
-        {
-            float distance = (fires[i].transform.position - player.transform.position).sqrMagnitude;
-
-            if(distance < nearestDistance)
-            {
-                nearestFire = fires[i];
-                nearestDistance = distance;
-            }
-        }
-        return nearestFire;
-    }
-*/
 }

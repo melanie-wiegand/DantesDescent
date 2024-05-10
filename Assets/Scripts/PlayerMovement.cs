@@ -148,8 +148,20 @@ public class PlayerMovement : MonoBehaviour
                 audioSource.Play();
             }
         }
+        if(other.gameObject.CompareTag("Campfire"))
+        {
+            survival.UpdateTempWarm();
+        }
     }
 
+    // check if the player is near a campfire
+    void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.CompareTag("Campfire"))
+        {
+            survival.UpdateTempCool();
+        }
+    }
 }
 
 
