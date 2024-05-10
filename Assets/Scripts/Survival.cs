@@ -16,13 +16,11 @@ public class Survival : MonoBehaviour
     public float Temperature = 0f;
     public float TempOT = 0.5f;
     public Slider TempSlider;
-
- //   public FirePlayerChecker firePlayerChecker;
- //   public Transform player;
  
     // Start is called before the first frame update
     void Start()
     {
+        // Initialize hunger and temperature to 100%
         Hunger = MaxHunger;
         Temperature = MaxTemp;
     }
@@ -34,6 +32,7 @@ public class Survival : MonoBehaviour
         Hunger = Hunger - HungerOT * Time.deltaTime;
         Temperature = Temperature - TempOT * Time.deltaTime;
 
+        // Update the sliders each frame
         UpdateSliders();
 
         // Cap the maximum temperature when player is warming up

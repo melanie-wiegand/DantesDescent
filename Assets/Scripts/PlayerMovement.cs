@@ -138,27 +138,36 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // Check if player collides with a collectable
         if(other.gameObject.CompareTag("Collectable"))
         {
+            // Disable collectable
             other.gameObject.SetActive(false);
+
+            // Increase hunger by 5
             survival.AddToHunger(5);
 
+            // Play pick up sound
             if (audioSource != null)
             {
                 audioSource.Play();
             }
         }
+
+        // Check if player enters the campfire radius
         if(other.gameObject.CompareTag("Campfire"))
         {
+            // Change (survival) TempOT to -1f to warm the player
             survival.UpdateTempWarm();
         }
     }
 
-    // check if the player is near a campfire
     void OnTriggerExit(Collider other)
     {
+        // Check if player exits the campfire radius
         if(other.gameObject.CompareTag("Campfire"))
         {
+            // Change (survival) TempOT to 0.5f to cool the player
             survival.UpdateTempCool();
         }
     }
