@@ -7,14 +7,12 @@ public class FlashlightController : MonoBehaviour
     public AudioClip turnOffSound;
 
     // Private variables
-    private Light flashlight;
+    public Light flashlight;
     private AudioSource audioSource;
 
     private void Start()
     {
         // Get Light component in the same GameObject
-        flashlight = GetComponent<Light>();
-
         if (flashlight == null)
         {
             Debug.LogWarning("Light component is not attached. Attach a Light component manually.");

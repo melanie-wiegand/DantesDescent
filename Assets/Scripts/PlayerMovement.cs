@@ -26,10 +26,13 @@ public class PlayerMovement : MonoBehaviour
     private CapsuleCollider playerCollider;
     private Survival survival;
 
+    private Animator animator;
+
 
     public bool canMove = true;
     float horizontalInput;
     float verticalInput;
+
 
     void Start()
     {
@@ -37,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         playerCollider = GetComponent<CapsuleCollider>();
         survival = GetComponent<Survival>(); 
+        animator = GetComponent<Animator>();  // Initialize the Animator
 
 
         if (playerCollider != null)
@@ -60,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
             HandleInput();
             ManageCrouch();
         }
+
     }
 
     void FixedUpdate()
@@ -92,7 +97,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(crouchKey)) {
             currentSpeed *= crouchSpeedMultiplier;
+            animator.SetBool("IsCrouching", true);
+        } else {
+            animator.SetBool("IsCrouching", false);
         }
+
+        animator.SetFloat("Speed", moveDirection.magnitude);
+        animator.SetFloat("MoveX", horizontalInput);
+        animator.SetFloat("MoveY", verticalInput);
 
         rb.velocity = moveDirection.normalized * currentSpeed;
     } 
@@ -114,7 +126,6 @@ public class PlayerMovement : MonoBehaviour
             Vector3 point = ray.GetPoint(rayDistance);
             Vector3 heightCorrectedPoint = new Vector3(point.x, transform.position.y, point.z);
             Vector3 direction = (heightCorrectedPoint - transform.position).normalized;
-            direction = -direction;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10));
         }
