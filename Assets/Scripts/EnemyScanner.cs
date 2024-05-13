@@ -25,6 +25,10 @@ public class EnemyScanner : MonoBehaviour
             {
                 currentAngle = rotationLimit * direction;  // Clamp the angle to the limit
                 direction *= -1;  // Reverse the direction
+
+                // Pause at either side for a random amount of time between 1 and 3 seconds
+                float pauseTime = Random.Range(1f, 3f);
+                yield return new WaitForSeconds(pauseTime);
             }
 
             // Apply the rotation relative to the initial orientation
