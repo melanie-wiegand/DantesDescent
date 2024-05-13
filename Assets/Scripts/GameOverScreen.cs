@@ -9,12 +9,14 @@ public class GameOverScreen : MonoBehaviour
     public PlayerMovement playerMovement;
     public GameObject statusBars;
     public GameObject JumpscareScreen;
+    public GameObject WinScreen;
 
 
     void Start()
     {
         gameOverPanel.SetActive(false);
         JumpscareScreen.SetActive(false);
+        WinScreen.SetActive(false);
     }
 
     public IEnumerator Jumpscare()
@@ -33,6 +35,11 @@ public class GameOverScreen : MonoBehaviour
         playerMovement.canMove = false;
         playerMovement.StopAllMovement();
         thirdPersonCam.UnlockCursor();
+    }
+
+    public void ShowWin()
+    {
+        WinScreen.SetActive(true);
     }
 
     public void RestartFromCheckpoint(Transform checkpoint)
