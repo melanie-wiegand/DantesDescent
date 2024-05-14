@@ -13,11 +13,17 @@ public class Menu : MonoBehaviour
     {
         BlackScreen.SetActive(false);
     }
-    public void OnPlayButton()
+    public void PurgatoryStart()
     {
         BlackScreen.SetActive(true);
         //StartCoroutine(FadeTextToFullAlpha(1f, text));
         SceneManager.LoadScene(1);
+    }
+
+    public void GluttonyStart()
+    {
+        BlackScreen.SetActive(true);
+        SceneManager.LoadScene(2);
     }
 
     // from https://forum.unity.com/threads/fading-in-out-gui-text-with-c-solved.380822/
