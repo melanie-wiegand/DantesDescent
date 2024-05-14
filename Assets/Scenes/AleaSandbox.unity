@@ -287,7 +287,6 @@ MonoBehaviour:
   audioSource: {fileID: 1510170579}
   HamHungerAmount: 10
   DrumstickHungerAmount: 5
-  flame: {fileID: 538811391}
   canMove: 1
 --- !u!54 &92400297
 Rigidbody:
@@ -1019,6 +1018,92 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2975364062467259138, guid: 11109036b11b04ee7ac3dd0f8a81164d, type: 3}
   m_PrefabInstance: {fileID: 327737953}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &332104389
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 122790, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_Name
+      value: Hail - Heavy - NoExternalForces
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19889002, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19889002, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 122790, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 332104391}
+  m_SourcePrefab: {fileID: 100100000, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+--- !u!1 &332104390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 122790, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+  m_PrefabInstance: {fileID: 332104389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &332104391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332104390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724e417b91d084744b9ea00f381d18fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hailParticle: {fileID: 332104390}
 --- !u!1001 &337303171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6414,3 +6499,4 @@ SceneRoots:
   - {fileID: 1068939884}
   - {fileID: 722525222}
   - {fileID: 2092379406}
+  - {fileID: 332104389}
