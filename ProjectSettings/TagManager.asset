@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collectable
   - Campfire
+  - Drumstick
+  - Ham
   layers:
   - Default
   - TransparentFX

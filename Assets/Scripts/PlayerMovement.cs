@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
 
+    // Collectable hunger addend
+    [Header("Hunger Addends")]
+    public int HamHungerAmount = 10;
+    public int DrumstickHungerAmount = 5;
+
     private float originalHeight;
     private float originalScaleY;
     private Vector3 moveDirection = Vector3.zero;
@@ -150,13 +155,28 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Check if player collides with a collectable
-        if(other.gameObject.CompareTag("Collectable"))
+        if(other.gameObject.CompareTag("Drumstick"))
         {
             // Disable collectable
             other.gameObject.SetActive(false);
 
-            // Increase hunger by 5
-            survival.AddToHunger(5);
+            // Increase hunger
+            survival.AddToHunger(DrumstickHungerAmount);
+
+            // Play pick up sound
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+        }
+
+        if(other.gameObject.CompareTag("Ham"))
+        {
+            // Disable colletable
+            other.gameObject.SetActive(false);
+
+            // Increase hunger
+            survival.AddToHunger(HamHungerAmount);
 
             // Play pick up sound
             if (audioSource != null)
