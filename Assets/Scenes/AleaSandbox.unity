@@ -259,14 +259,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf6c19fb68740519299a3bc12dba7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHunger: 100
-  Hunger: 0
-  HungerSlider: {fileID: 586326330}
-  HungerOT: 0.5
-  MaxTemp: 100
-  Temperature: 0
-  TempOT: 0.5
-  TempSlider: {fileID: 467908899}
+  maxHunger: 100
+  hunger: 0
+  hungerSlider: {fileID: 586326330}
+  hungerOT: 0.5
+  maxTemp: 100
+  temperature: 0
+  tempOT: 0.5
+  hailTempOT: 1
+  campfireTempOT: -3
+  tempSlider: {fileID: 467908899}
+  hailParticle: {fileID: 332104390}
+  isCycling: 0
 --- !u!114 &92400296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,14 +855,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf6c19fb68740519299a3bc12dba7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHunger: 100
-  Hunger: 0
-  HungerSlider: {fileID: 586326330}
-  HungerOT: 0.5
-  MaxTemp: 100
-  Temperature: 0
-  TempOT: 0.5
-  TempSlider: {fileID: 467908899}
+  maxHunger: 100
+  hunger: 0
+  hungerSlider: {fileID: 586326330}
+  hungerOT: 0.5
+  maxTemp: 100
+  temperature: 0
+  tempOT: 0.5
+  hailTempOT: 1
+  campfireTempOT: -3
+  tempSlider: {fileID: 467908899}
+  hailParticle: {fileID: 332104390}
+  isCycling: 0
 --- !u!65 &243417562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1084,14 +1092,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 122790, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 332104391}
+      addedObject: {fileID: 332104395}
   m_SourcePrefab: {fileID: 100100000, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
 --- !u!1 &332104390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 122790, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
   m_PrefabInstance: {fileID: 332104389}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &332104391
+--- !u!114 &332104395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1100,10 +1108,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 332104390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724e417b91d084744b9ea00f381d18fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cdf6c19fb68740519299a3bc12dba7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHunger: 100
+  hunger: 0
+  hungerSlider: {fileID: 586326330}
+  hungerOT: 0.5
+  maxTemp: 100
+  temperature: 0
+  tempOT: 0.5
+  hailTempOT: 1
+  campfireTempOT: -3
+  tempSlider: {fileID: 467908899}
   hailParticle: {fileID: 332104390}
+  isCycling: 0
 --- !u!1001 &337303171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5612,7 +5631,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 467908899}
     - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: tempSlider
+      value: 
+      objectReference: {fileID: 467908899}
+    - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
       propertyPath: HungerSlider
+      value: 
+      objectReference: {fileID: 586326330}
+    - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: hailParticle
+      value: 
+      objectReference: {fileID: 332104390}
+    - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: hungerSlider
       value: 
       objectReference: {fileID: 586326330}
     - target: {fileID: 3422345775727166059, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
@@ -6365,6 +6396,10 @@ PrefabInstance:
       propertyPath: HungerSlider
       value: 
       objectReference: {fileID: 586326330}
+    - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: hailParticle
+      value: 
+      objectReference: {fileID: 332104390}
     - target: {fileID: 3422345775727166059, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
       propertyPath: m_Name
       value: Campfire

@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     // Collectable hunger addend
     [Header("Hunger Addends")]
-    public int HamHungerAmount = 10;
-    public int DrumstickHungerAmount = 5;
+    public int hamHungerAmount = 10;
+    public int drumstickHungerAmount = 5;
 
     private float originalHeight;
     private float originalScaleY;
@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
             other.gameObject.SetActive(false);
 
             // Increase hunger
-            survival.AddToHunger(DrumstickHungerAmount);
+            survival.AddToHunger(drumstickHungerAmount);
 
             // Play pick up sound
             if (audioSource != null)
@@ -174,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
             other.gameObject.SetActive(false);
 
             // Increase hunger
-            survival.AddToHunger(HamHungerAmount);
+            survival.AddToHunger(hamHungerAmount);
 
             // Play pick up sound
             if (audioSource != null)
@@ -182,12 +182,12 @@ public class PlayerMovement : MonoBehaviour
                 audioSource.Play();
             }
         }
-        
+
         // Check if player enters the campfire radius
         if(other.gameObject.CompareTag("Campfire"))
         {
             // Change (survival) TempOT to -1f to warm the player
-            survival.UpdateTempWarm();
+            survival.SetNearCampfireState();
         }
     }
 
@@ -197,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Campfire"))
         {
             // Change (survival) TempOT to 0.5f to cool the player
-            survival.UpdateTempCool();
+            survival.ResetTemperatureState();
         }      
     }
 }
