@@ -33,11 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
 
-
     public bool canMove = true;
     float horizontalInput;
     float verticalInput;
-
 
     void Start()
     {
@@ -184,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
                 audioSource.Play();
             }
         }
-
+        
         // Check if player enters the campfire radius
         if(other.gameObject.CompareTag("Campfire"))
         {
@@ -200,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Change (survival) TempOT to 0.5f to cool the player
             survival.UpdateTempCool();
-        }
+        }      
     }
 }
 

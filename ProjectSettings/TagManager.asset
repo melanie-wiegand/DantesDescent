@@ -8,6 +8,7 @@ TagManager:
   - Campfire
   - Drumstick
   - Ham
+  - Flame
   layers:
   - Default
   - TransparentFX
