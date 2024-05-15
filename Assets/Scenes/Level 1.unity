@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028353, g: 0.22571383, b: 0.30692253, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalRotation.x
@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalRotation.z
@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -316,14 +316,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf6c19fb68740519299a3bc12dba7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHunger: 100
-  Hunger: 0
-  HungerSlider: {fileID: 586326330}
-  HungerOT: 0.5
-  MaxTemp: 100
-  Temperature: 0
-  TempOT: 0.5
-  TempSlider: {fileID: 467908899}
+  maxHunger: 100
+  hungerSlider: {fileID: 0}
+  hungerOT: 0.5
+  maxTemp: 100
+  tempOT: 0.5
+  tempSlider: {fileID: 0}
+  currentState: 0
 --- !u!114 &92400296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,8 +341,8 @@ MonoBehaviour:
   playerCamera: {fileID: 367108135}
   crouchKey: 304
   audioSource: {fileID: 1510170579}
-  HamHungerAmount: 10
-  DrumstickHungerAmount: 5
+  hamHungerAmount: 10
+  drumstickHungerAmount: 5
   canMove: 1
 --- !u!54 &92400297
 Rigidbody:
@@ -973,6 +972,18 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 5397275387403566676, guid: 11109036b11b04ee7ac3dd0f8a81164d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0059
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397275387403566676, guid: 11109036b11b04ee7ac3dd0f8a81164d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0059
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397275387403566676, guid: 11109036b11b04ee7ac3dd0f8a81164d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0059
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397275387403566676, guid: 11109036b11b04ee7ac3dd0f8a81164d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -91.3
       objectReference: {fileID: 0}
@@ -1020,6 +1031,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2975364062467259138, guid: 11109036b11b04ee7ac3dd0f8a81164d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 367108136}
+    - targetCorrespondingSourceObject: {fileID: 2975364062467259138, guid: 11109036b11b04ee7ac3dd0f8a81164d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 367108139}
   m_SourcePrefab: {fileID: 100100000, guid: 11109036b11b04ee7ac3dd0f8a81164d, type: 3}
 --- !u!1 &327737954 stripped
 GameObject:
@@ -1065,6 +1079,50 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &367108139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327737954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &371021503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,14 +3785,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf6c19fb68740519299a3bc12dba7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHunger: 100
-  Hunger: 0
-  HungerSlider: {fileID: 0}
-  HungerOT: 0.5
-  MaxTemp: 100
-  Temperature: 0
-  TempOT: 0.5
-  TempSlider: {fileID: 0}
+  maxHunger: 100
+  hungerSlider: {fileID: 0}
+  hungerOT: 0.5
+  maxTemp: 100
+  tempOT: 0.5
+  tempSlider: {fileID: 0}
+  currentState: 0
 --- !u!1001 &1150940221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5635,7 +5692,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856157479}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -5906,14 +5963,14 @@ RectTransform:
   m_GameObject: {fileID: 2026548314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 19.133417, y: 10.767912, z: 1}
+  m_LocalScale: {x: 19.292223, y: 12.741671, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1856157480}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -92}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026548316
@@ -5936,7 +5993,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8345c0fd7bb13e94f8341f2cc5aa4e38, type: 3}
+  m_Texture: {fileID: 2800000, guid: ae3da7ad27b1299439f611932e4891d4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
