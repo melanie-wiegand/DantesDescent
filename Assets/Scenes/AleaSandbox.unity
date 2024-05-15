@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028353, g: 0.22571383, b: 0.30692253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2406,19 +2406,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7044006
+      value: 0.7044004
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.061804783
+      value: 0.06180476
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7044006
+      value: 0.7044007
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.061804783
+      value: -0.061804786
       objectReference: {fileID: 0}
     - target: {fileID: 7863288230491389193, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_ScreenX
@@ -2908,7 +2908,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.8549239, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 75
   m_Range: 60
   m_SpotAngle: 23.7193
   m_InnerSpotAngle: 15
@@ -4498,6 +4498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
+    - target: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
+      propertyPath: m_TagString
+      value: Wolf
+      objectReference: {fileID: 0}
     - target: {fileID: 477254, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.17
@@ -4552,6 +4556,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1013601400}
+    - targetCorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1013601404}
   m_SourcePrefab: {fileID: 100100000, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
 --- !u!1 &1013601399 stripped
 GameObject:
@@ -4580,9 +4587,13 @@ MonoBehaviour:
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
+  walkSpeed: 4
   fleeDuration: 5
+  isFleeing: 0
+  fleeSpeed: 6
   sightRange: 0
   playerInSightRange: 0
+  flashlight: {fileID: 699639493}
 --- !u!195 &1013601401
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4605,6 +4616,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!64 &1013601404
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013601399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1038183782
 PrefabInstance:
   m_ObjectHideFlags: 0

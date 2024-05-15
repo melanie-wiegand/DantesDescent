@@ -13,21 +13,25 @@ public class WolfAI : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange = 20;
+    public float walkSpeed = 4f;
 
     // Fleeing
-    public float fleeDuration = 5f;
-    private bool isFleeing = false;
+    public float fleeDuration = 8f;
+    public bool isFleeing = false;
+    public float fleeSpeed = 6f;
 
     // States
     public float sightRange = 30;
     public bool playerInSightRange;
+
+    public GameObject flashlight;
 
     private void Awake()
     {
         player = GameObject.Find("DanteObject").transform;
         agent = GetComponent<NavMeshAgent>();
         walkPointRange = 20;
-        sightRange = 5;
+        sightRange = 20;
     }
 
     private void Update()
@@ -38,12 +42,25 @@ public class WolfAI : MonoBehaviour
         // Set states
         if(!playerInSightRange && !isFleeing) Patrolling();
         if(playerInSightRange && !isFleeing) ChasePlayer();
+
+        // Check if the light from flashlight hits the wolf
+        if (IsFlashlightHittingWolf())
+        {
+            // Trigger fleeing behavior
+            if (!isFleeing)
+            {
+                StartCoroutine(FleeCoroutine());
+            }
+        }
     }
 
     private void Patrolling()
     {
         // Find a walkpoint
         if(!walkPointSet) SearchWalkPoint();
+
+        // Set walk speed
+        agent.speed = walkSpeed;
 
         // Travel to walkpoint
         if(walkPointSet)
@@ -76,29 +93,23 @@ public class WolfAI : MonoBehaviour
     {
         // Set destintion to the player location
         agent.SetDestination(player.position);
+
+        // Set walk speed
+        agent.speed = walkSpeed;
     }
 
-    private void OnDrawGizmosSelected()
+private bool IsFlashlightHittingWolf()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-    }
-
-    private void RunFromFlashlight()
-    {
-        // Perform raycast from flashlight towards the wolf
+        // Check if the light from the flashlight hits the wolf using raycasting
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, player.position - transform.position, out hit, Mathf.Infinity))
+        if (Physics.Raycast(flashlight.transform.position, flashlight.transform.forward, out hit, Mathf.Infinity))
         {
-            if (hit.collider.gameObject.CompareTag("Flashlight"))
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Wolf"))
             {
-                // Trigger fleeing behavior
-                if (!isFleeing)
-                {
-                    StartCoroutine(FleeCoroutine());
-                }
+                return true;
             }
         }
+        return false;
     }
 
     IEnumerator FleeCoroutine()
@@ -110,6 +121,9 @@ public class WolfAI : MonoBehaviour
         float startTime = Time.time;
         while (Time.time - startTime < fleeDuration)
         {
+            // Set flee speed
+            agent.speed = fleeSpeed;
+
             // Calculate flee direction (away from player)
             Vector3 fleeDirection = transform.position - player.position;
             fleeDirection.y = 0f; // Ensure the wolf doesn't flee vertically
@@ -125,6 +139,14 @@ public class WolfAI : MonoBehaviour
 
         // Reset fleeing state
         isFleeing = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Campfire"))
+        {
+            StartCoroutine(FleeCoroutine());
+        }
     }
 }
 
