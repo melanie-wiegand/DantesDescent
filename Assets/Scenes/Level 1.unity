@@ -460,7 +460,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -6166,7 +6166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -39.7
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 468086, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
       propertyPath: m_LocalPosition.z
