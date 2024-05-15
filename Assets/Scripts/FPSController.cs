@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Collectable"))
         {
             other.gameObject.SetActive(false);
-            survival.AddToHunger(5);
 
             if (audioSource != null)
             {
