@@ -266,11 +266,8 @@ MonoBehaviour:
   maxTemp: 100
   temperature: 0
   tempOT: 0.5
-  hailTempOT: 1
-  campfireTempOT: -3
   tempSlider: {fileID: 467908899}
-  hailParticle: {fileID: 332104390}
-  isCycling: 0
+  currentState: 0
 --- !u!114 &92400296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,8 +286,8 @@ MonoBehaviour:
   playerCamera: {fileID: 367108135}
   crouchKey: 304
   audioSource: {fileID: 1510170579}
-  HamHungerAmount: 10
-  DrumstickHungerAmount: 5
+  hamHungerAmount: 10
+  drumstickHungerAmount: 5
   canMove: 1
 --- !u!54 &92400297
 Rigidbody:
@@ -862,11 +859,8 @@ MonoBehaviour:
   maxTemp: 100
   temperature: 0
   tempOT: 0.5
-  hailTempOT: 1
-  campfireTempOT: -3
   tempSlider: {fileID: 467908899}
-  hailParticle: {fileID: 332104390}
-  isCycling: 0
+  currentState: 0
 --- !u!65 &243417562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1093,6 +1087,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 122790, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 332104395}
+    - targetCorrespondingSourceObject: {fileID: 122790, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 332104396}
   m_SourcePrefab: {fileID: 100100000, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
 --- !u!1 &332104390 stripped
 GameObject:
@@ -1118,11 +1115,23 @@ MonoBehaviour:
   maxTemp: 100
   temperature: 0
   tempOT: 0.5
-  hailTempOT: 1
-  campfireTempOT: -3
   tempSlider: {fileID: 467908899}
+  currentState: 0
+--- !u!114 &332104396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332104390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 807056ea967464270adc6f004ed07005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   hailParticle: {fileID: 332104390}
   isCycling: 0
+  survival: {fileID: 332104395}
 --- !u!1001 &337303171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6393,6 +6402,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 467908899}
     - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: tempSlider
+      value: 
+      objectReference: {fileID: 467908899}
+    - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
       propertyPath: HungerSlider
       value: 
       objectReference: {fileID: 586326330}
@@ -6400,6 +6413,10 @@ PrefabInstance:
       propertyPath: hailParticle
       value: 
       objectReference: {fileID: 332104390}
+    - target: {fileID: 3337790067676686986, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
+      propertyPath: hungerSlider
+      value: 
+      objectReference: {fileID: 586326330}
     - target: {fileID: 3422345775727166059, guid: 7000b5427dfc24f8592fac04b8003b6a, type: 3}
       propertyPath: m_Name
       value: Campfire

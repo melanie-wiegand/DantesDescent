@@ -160,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Increase hunger
             survival.AddToHunger(drumstickHungerAmount);
+            survival.UpdateSliders();
 
             // Play pick up sound
             if (audioSource != null)
@@ -175,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Increase hunger
             survival.AddToHunger(hamHungerAmount);
+            survival.UpdateSliders();
 
             // Play pick up sound
             if (audioSource != null)
