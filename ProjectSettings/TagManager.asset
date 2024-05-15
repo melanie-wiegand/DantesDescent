@@ -9,15 +9,17 @@ TagManager:
   - Drumstick
   - Ham
   - Flame
+  - whatIsGround
+  - Flashlight
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - wallLayer
   - Water
   - UI
   - Player
-  - wallLayer
+  - whatIsGround
   - 
   - 
   - 

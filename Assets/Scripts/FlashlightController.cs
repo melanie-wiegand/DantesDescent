@@ -35,6 +35,7 @@ public class FlashlightController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
+            Debug.Log("F was pressed");
             if (flashlight != null)
             {
                 flashlight.enabled = !flashlight.enabled;
