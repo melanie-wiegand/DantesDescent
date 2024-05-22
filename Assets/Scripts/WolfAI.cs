@@ -26,8 +26,6 @@ public class WolfAI : MonoBehaviour
     public float sightRange = 30;
     public bool playerInSightRange;
 
-    public GameObject flashlight;
-
     private void Awake()
     {
         player = GameObject.Find("DanteObject").transform;
@@ -44,16 +42,6 @@ public class WolfAI : MonoBehaviour
         // Set states
         if(!playerInSightRange && !isFleeing) Patrolling();
         if(playerInSightRange && !isFleeing) ChasePlayer();
-
-        // Check if the light from flashlight hits the wolf
-        if (IsFlashlightHittingWolf())
-        {
-            // Trigger fleeing behavior
-            if (!isFleeing)
-            {
-                StartCoroutine(FleeCoroutine());
-            }
-        }
     }
 
     private void Patrolling()
@@ -104,20 +92,6 @@ public class WolfAI : MonoBehaviour
 
         // Set walk speed
         agent.speed = walkSpeed;
-    }
-
-private bool IsFlashlightHittingWolf()
-    {
-        // Check if the light from the flashlight hits the wolf using raycasting
-        RaycastHit hit;
-        if (Physics.Raycast(flashlight.transform.position, flashlight.transform.forward, out hit, Mathf.Infinity))
-        {
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("Wolf"))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     IEnumerator FleeCoroutine()
