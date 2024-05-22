@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode crouchKey = KeyCode.LeftShift;
+    public KeyCode toggleTorchKey = KeyCode.E;
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -22,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Hunger Addends")]
     public int hamHungerAmount = 10;
     public int drumstickHungerAmount = 5;
+
+    [Header("UI Elements")]
+    public GameObject torchPromptText; 
+
+    public GameObject torchFireEffect; 
+    private bool isNearCampfire = false;
 
     private float originalHeight;
     private float originalScaleY;
@@ -37,13 +44,25 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         playerCollider = GetComponent<CapsuleCollider>();
         survival = GetComponent<Survival>(); 
-        animator = GetComponent<Animator>();  // Initialize the Animator
+        animator = GetComponent<Animator>();
+
+        if (torchFireEffect != null)
+        {
+            torchFireEffect.SetActive(false);
+            Debug.Log("Torch flame effect assigned: " + torchFireEffect.name);
+        }
+
+        if (torchPromptText != null)
+        {
+            torchPromptText.SetActive(false); // Ensure the prompt text is initially hidden
+        }
 
 
         if (playerCollider != null)
@@ -66,6 +85,17 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleInput();
             ManageCrouch();
+        }
+
+        if (Input.GetKeyDown(toggleTorchKey) && isNearCampfire)
+        {
+            ToggleTorchFire();
+        }
+
+        if (Input.GetMouseButtonDown(0)) // Detect left mouse button click
+        {
+            animator.SetTrigger("attack");
+            //Check for detection of Wolf GameObject here
         }
 
     }
@@ -121,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
     private void RotateToCursor()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        Plane groundPlane = new Plane(Vector3.up, transform.position);
         float rayDistance;
 
         if (groundPlane.Raycast(ray, out rayDistance))
@@ -147,6 +177,15 @@ public class PlayerMovement : MonoBehaviour
             playerCollider.height = originalHeight;
             playerCollider.center = new Vector3(playerCollider.center.x, 0.0f, playerCollider.center.z);
             transform.localScale = new Vector3(transform.localScale.x, originalScaleY, transform.localScale.z);
+        }
+    }
+
+    private void ToggleTorchFire()
+    {
+        if (torchFireEffect != null)
+        {
+            animator.SetTrigger("lightingTorch");
+            torchFireEffect.SetActive(!torchFireEffect.activeSelf);
         }
     }
 
@@ -186,6 +225,11 @@ public class PlayerMovement : MonoBehaviour
         // Check if player enters the campfire radius
         if(other.gameObject.CompareTag("Campfire"))
         {
+            isNearCampfire = true;
+            if (torchPromptText != null)
+            {
+                torchPromptText.SetActive(true); // Show the prompt text when near a campfire
+            }
             // Change (survival) TempOT to -1f to warm the player
             survival.SetNearCampfireState();
         }
@@ -196,6 +240,11 @@ public class PlayerMovement : MonoBehaviour
         // Check if player exits the campfire radius
         if(other.gameObject.CompareTag("Campfire"))
         {
+            isNearCampfire = false;
+            if (torchPromptText != null)
+            {
+                torchPromptText.SetActive(false); // Hide the prompt text when leaving the campfire
+            }
             // Change (survival) TempOT to 0.5f to cool the player
             survival.ResetTemperatureState();
         }      
