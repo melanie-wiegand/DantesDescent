@@ -14,11 +14,13 @@ public class WolfAI : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange = 20;
     public float walkSpeed = 4f;
+    public float defaultAngularSpeed = 360f;
 
     // Fleeing
     public float fleeDuration = 8f;
     public bool isFleeing = false;
-    public float fleeSpeed = 6f;
+    public float fleeSpeed = 8f;
+    public float fleeingAngularSpeed = 600f;
 
     // States
     public float sightRange = 30;
@@ -56,6 +58,9 @@ public class WolfAI : MonoBehaviour
 
     private void Patrolling()
     {
+        // Set turning speed
+        agent.angularSpeed = defaultAngularSpeed;
+
         // Find a walkpoint
         if(!walkPointSet) SearchWalkPoint();
 
@@ -91,6 +96,9 @@ public class WolfAI : MonoBehaviour
 
     private void ChasePlayer() 
     {
+        // Set turning speed
+        agent.angularSpeed = defaultAngularSpeed;
+
         // Set destintion to the player location
         agent.SetDestination(player.position);
 
@@ -116,6 +124,9 @@ private bool IsFlashlightHittingWolf()
     {
         // Set fleeing state
         isFleeing = true;
+
+        // Set turning speed
+        agent.angularSpeed = fleeingAngularSpeed;
 
         // Flee from player for fleeDuration seconds
         float startTime = Time.time;
