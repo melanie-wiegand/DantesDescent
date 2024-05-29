@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<CapsuleCollider>();
         survival = GetComponent<Survival>(); 
         animator = GetComponent<Animator>();
+        wolfAI = GetComponent<WolfAI>();
 
         if (torchFireEffect != null)
         {
@@ -101,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("attack");
             //Check for detection of Wolf GameObject here
-            if(wolfAI != null && wolfAI.inFleePlayerRange && !wolfAI.isFleeing) {
+            if(wolfAI.inFleePlayerRange) {
                 StartCoroutine(wolfAI.FleeCoroutine());
             }
         }
