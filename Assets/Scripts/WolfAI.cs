@@ -21,10 +21,12 @@ public class WolfAI : MonoBehaviour
     public bool isFleeing = false;
     public float fleeSpeed = 8f;
     public float fleeingAngularSpeed = 600f;
+    public float fleePlayerRange = 10f;
 
     // States
     public float sightRange = 30;
     public bool playerInSightRange;
+    public bool inFleePlayerRange;
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class WolfAI : MonoBehaviour
     {
         // Check for sight range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
+        inFleePlayerRange = Physics.CheckSphere(transform.position, fleePlayerRange, Player);
 
         // Set states
         if(!playerInSightRange && !isFleeing) Patrolling();
@@ -94,7 +97,7 @@ public class WolfAI : MonoBehaviour
         agent.speed = walkSpeed;
     }
 
-    IEnumerator FleeCoroutine()
+    public IEnumerator FleeCoroutine()
     {
         // Set fleeing state
         isFleeing = true;
