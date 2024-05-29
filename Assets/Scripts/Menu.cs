@@ -26,6 +26,18 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void FraudStart()
+    {
+        BlackScreen.SetActive(true);
+        SceneManager.LoadScene(3);
+    }
+
+    public void ViolenceStart()
+    {
+        BlackScreen.SetActive(true);
+        SceneManager.LoadScene(4);
+    }
+
     // from https://forum.unity.com/threads/fading-in-out-gui-text-with-c-solved.380822/
     public IEnumerator FadeTextToFullAlpha(float t, Text i)
     {

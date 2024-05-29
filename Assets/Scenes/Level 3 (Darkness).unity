@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.008916955, g: 0.013043514, b: 0.020362426, a: 1}
+  m_IndirectSpecularColor: {r: 0.008952402, g: 0.013101039, b: 0.020449812, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -790,6 +790,8 @@ MonoBehaviour:
   statusBars: {fileID: 1210530089}
   JumpscareScreen: {fileID: 1856157479}
   WinScreen: {fileID: 1207347288}
+  HungerScreen: {fileID: 0}
+  TempScreen: {fileID: 0}
 --- !u!114 &164564793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2123,7 +2125,7 @@ GameObject:
   - component: {fileID: 584158524}
   - component: {fileID: 584158523}
   m_Layer: 5
-  m_Name: IceWin
+  m_Name: DarknessWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2168,7 +2170,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6e8933d129cdda340b6ed956a6ed2518, type: 3}
+  m_Texture: {fileID: 2800000, guid: 141f6f8761d34c74797f9d348e2ddc46, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4374,6 +4376,7 @@ MonoBehaviour:
   maxTemp: 100
   tempOT: 0
   tempSlider: {fileID: 467908899}
+  gameOverScreen: {fileID: 0}
   currentState: 0
 --- !u!1001 &1150940221
 PrefabInstance:
@@ -6355,6 +6358,7 @@ MonoBehaviour:
   maxTemp: 100
   tempOT: 0.5
   tempSlider: {fileID: 467908899}
+  gameOverScreen: {fileID: 0}
   currentState: 0
 --- !u!1 &1852356773
 GameObject:

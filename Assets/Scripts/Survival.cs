@@ -15,6 +15,7 @@ public class Survival : MonoBehaviour
     public float tempOT;
     public Slider tempSlider;
 
+    public GameOverScreen gameOverScreen;
 
     public enum TemperatureState
     {
@@ -40,7 +41,14 @@ public class Survival : MonoBehaviour
     {
         UpdateTemperature();
         UpdateHunger(-hungerOT * Time.deltaTime);
-
+        //if (hungerSlider.value <= 0)
+        //{
+        //    gameOverScreen.ShowHungerLoss();
+        //}
+        //if (tempSlider.value <= 0)
+        //{
+        //    gameOverScreen.ShowTempLoss();
+        //}
     }
 
     public void UpdateTemperature() {

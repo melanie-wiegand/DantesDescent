@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.015042584, g: 0.009004244, b: 0.014017131, a: 1}
+  m_IndirectSpecularColor: {r: 0.015113523, g: 0.009044806, b: 0.0140945725, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1204,6 +1204,8 @@ MonoBehaviour:
   statusBars: {fileID: 1210530089}
   JumpscareScreen: {fileID: 1856157479}
   WinScreen: {fileID: 1207347288}
+  HungerScreen: {fileID: 0}
+  TempScreen: {fileID: 0}
 --- !u!114 &164564793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2929,19 +2931,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7044006
+      value: 0.7044004
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.061804783
+      value: 0.06180476
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7044006
+      value: 0.7044007
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.061804783
+      value: -0.061804786
       objectReference: {fileID: 0}
     - target: {fileID: 7863288230491389193, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_ScreenX
@@ -3011,7 +3013,7 @@ GameObject:
   - component: {fileID: 584158524}
   - component: {fileID: 584158523}
   m_Layer: 5
-  m_Name: IceWin
+  m_Name: BloodWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3056,7 +3058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6e8933d129cdda340b6ed956a6ed2518, type: 3}
+  m_Texture: {fileID: 2800000, guid: d555659819dcbf9438c19317d6fbd796, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -6145,6 +6147,7 @@ MonoBehaviour:
   maxTemp: 100
   tempOT: 0
   tempSlider: {fileID: 467908899}
+  gameOverScreen: {fileID: 0}
   currentState: 0
 --- !u!1001 &1150940221
 PrefabInstance:
@@ -8742,6 +8745,7 @@ MonoBehaviour:
   maxTemp: 100
   tempOT: 0.5
   tempSlider: {fileID: 467908899}
+  gameOverScreen: {fileID: 0}
   currentState: 0
 --- !u!1 &1852356773
 GameObject:
@@ -9311,7 +9315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ae3da7ad27b1299439f611932e4891d4, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8345c0fd7bb13e94f8341f2cc5aa4e38, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

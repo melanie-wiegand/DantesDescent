@@ -10,6 +10,8 @@ public class GameOverScreen : MonoBehaviour
     public GameObject statusBars;
     public GameObject JumpscareScreen;
     public GameObject WinScreen;
+    public GameObject HungerScreen;
+    public GameObject TempScreen;
 
 
     void Start()
@@ -17,6 +19,8 @@ public class GameOverScreen : MonoBehaviour
         gameOverPanel.SetActive(false);
         JumpscareScreen.SetActive(false);
         WinScreen.SetActive(false);
+        HungerScreen.SetActive(false);
+        TempScreen.SetActive(false);
     }
 
     public IEnumerator Jumpscare()
@@ -37,9 +41,31 @@ public class GameOverScreen : MonoBehaviour
         thirdPersonCam.UnlockCursor();
     }
 
+    public void ShowHungerLoss()
+    {
+        HungerScreen.SetActive(true);
+        //statusBars.SetActive(false);
+        playerMovement.canMove = false;
+        playerMovement.StopAllMovement();
+        thirdPersonCam.UnlockCursor();
+    }
+
+    public void ShowTempLoss()
+    {
+        TempScreen.SetActive(true);
+        //statusBars.SetActive(false);
+        playerMovement.canMove = false;
+        playerMovement.StopAllMovement();
+        thirdPersonCam.UnlockCursor();
+    }
+    
     public void ShowWin()
     {
         WinScreen.SetActive(true);
+        statusBars.SetActive(false);
+        playerMovement.canMove = false;
+        playerMovement.StopAllMovement();
+        thirdPersonCam.UnlockCursor();
     }
 
     public void RestartFromCheckpoint(Transform checkpoint)
