@@ -189,49 +189,77 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1571900254084322998}
     m_Modifications:
+    - target: {fileID: 2564109987188821009, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 648ffaa5c9a6a9745a09dafdd6ae1fd1, type: 2}
+    - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.175
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.228
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.047
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.30887064
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.4897272
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.71878344
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.38485935
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -58.847
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -172.551
       objectReference: {fileID: 0}
     - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 64.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4077288193723231684, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
       propertyPath: m_Name
       value: DantesTorch
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747727764551003063, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747727764551003063, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -241,6 +269,11 @@ PrefabInstance:
 --- !u!4 &2115300108045490568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3737601410409445246, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
+  m_PrefabInstance: {fileID: 3352277447085240054}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7428558620317090833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5301339462552988391, guid: 34c6fe33973a93b44a7287c4b419bb35, type: 3}
   m_PrefabInstance: {fileID: 3352277447085240054}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8776609558996467893
@@ -420,7 +453,7 @@ MonoBehaviour:
   hamHungerAmount: 10
   drumstickHungerAmount: 5
   torchPromptText: {fileID: 0}
-  torchFireEffect: {fileID: 0}
+  torchFireEffect: {fileID: 7428558620317090833}
   canMove: 1
 --- !u!114 &1719734388070433358
 MonoBehaviour:

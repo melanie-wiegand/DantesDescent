@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 6f;
     public float crouchSpeedMultiplier = 0.5f;
     public float crouchHeightMultiplier = 0.5f;
+    public float sprintSpeedMultiplier = 1.5f;
 
     [Header("Camera")]
     public Camera playerCamera;
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode crouchKey = KeyCode.LeftShift;
     public KeyCode toggleTorchKey = KeyCode.E;
+    public KeyCode sprintKey = KeyCode.Space;
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -43,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
     float horizontalInput;
     float verticalInput;
-
+    private bool isSprinting = false;
 
     void Start()
     {
@@ -85,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleInput();
             ManageCrouch();
+            ManageSprint();
         }
 
         if (Input.GetKeyDown(toggleTorchKey) && isNearCampfire)
@@ -128,6 +131,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDirection = forward * verticalInput + right * horizontalInput;
         float currentSpeed = moveSpeed;
 
+        if (isSprinting)
+        {
+            currentSpeed *= sprintSpeedMultiplier;
+        }
+
         if (Input.GetKey(crouchKey)) {
             currentSpeed *= crouchSpeedMultiplier;
             animator.SetBool("IsCrouching", true);
@@ -138,9 +146,15 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", moveDirection.magnitude);
         animator.SetFloat("MoveX", horizontalInput);
         animator.SetFloat("MoveY", verticalInput);
+        animator.SetBool("IsSprinting", isSprinting);
+        
+        Vector3 velocity = moveDirection.normalized * currentSpeed;
+        velocity.y = rb.velocity.y; // Preserve the Y velocity for gravity
 
-        rb.velocity = moveDirection.normalized * currentSpeed;
+        rb.velocity = velocity;
     } 
+
+
     public void StopAllMovement() {
         if (rb != null) {
             rb.velocity = Vector3.zero;
@@ -160,7 +174,19 @@ public class PlayerMovement : MonoBehaviour
             Vector3 heightCorrectedPoint = new Vector3(point.x, transform.position.y, point.z);
             Vector3 direction = (heightCorrectedPoint - transform.position).normalized;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10));
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.deltaTime * 10));
+        }
+    }
+
+    private void ManageSprint()
+    {
+        if (Input.GetKeyDown(sprintKey))
+        {
+            isSprinting = true;
+        }
+        else if (Input.GetKeyUp(sprintKey))
+        {
+            isSprinting = false;
         }
     }
 
@@ -169,13 +195,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(crouchKey))
         {
             playerCollider.height = originalHeight * crouchHeightMultiplier;
-            playerCollider.center = new Vector3(playerCollider.center.x, -0.5f, playerCollider.center.z);
+            playerCollider.center = new Vector3(playerCollider.center.x, playerCollider.center.y * -0.5f, playerCollider.center.z);
             transform.localScale = new Vector3(transform.localScale.x, originalScaleY * crouchHeightMultiplier, transform.localScale.z);
         }
         else
         {
             playerCollider.height = originalHeight;
-            playerCollider.center = new Vector3(playerCollider.center.x, 0.0f, playerCollider.center.z);
+            playerCollider.center = new Vector3(playerCollider.center.x, playerCollider.center.y, playerCollider.center.z);
             transform.localScale = new Vector3(transform.localScale.x, originalScaleY, transform.localScale.z);
         }
     }
