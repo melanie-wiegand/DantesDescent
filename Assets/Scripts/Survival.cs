@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 public class Survival : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Survival : MonoBehaviour
     public Slider tempSlider;
 
     public GameOverScreen gameOverScreen;
+    private bool isGameOver = false;
 
     public enum TemperatureState
     {
@@ -41,16 +43,22 @@ public class Survival : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGameOver)
+        {
+            return;
+        }
         UpdateTemperature();
         UpdateHunger(-hungerOT * Time.deltaTime);
-        //if (hungerSlider.value <= 0)
-        //{
-        //    gameOverScreen.ShowHungerLoss();
-        //}
-        //if (tempSlider.value <= 0)
-        //{
-        //    gameOverScreen.ShowTempLoss();
-        //}
+        if (hungerSlider.value <= 0)
+        {
+            isGameOver = true;
+            gameOverScreen.ShowHungerLoss();
+        }
+        if (tempSlider.value <= 0)
+        {
+            isGameOver = true;
+            gameOverScreen.ShowTempLoss();
+        }
     }
 
     public void UpdateTemperature() {
