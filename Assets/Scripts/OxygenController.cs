@@ -84,7 +84,7 @@ public class OxygenController : MonoBehaviour
             // Oxygen decreases
             case OxygenState.Underwater:
                 isUnderwater = true;
-                oxygenSlider.value -= 2f * Time.deltaTime;
+                oxygenSlider.value -= 10f * Time.deltaTime;
                 break;
         }
 
