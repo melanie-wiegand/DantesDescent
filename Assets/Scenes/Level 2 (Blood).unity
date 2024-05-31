@@ -2597,19 +2597,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7044006
+      value: 0.7044004
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.061804783
+      value: 0.06180476
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7044006
+      value: 0.7044007
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.061804783
+      value: -0.061804786
       objectReference: {fileID: 0}
     - target: {fileID: 7863288230491389193, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_ScreenX
@@ -6542,6 +6542,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260627927}
   m_CullTransparentMesh: 1
+--- !u!23 &1320704065
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379990375}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials: []
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &1344457499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6635,8 +6676,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379990376}
-  - component: {fileID: 1379990378}
   - component: {fileID: 1379990377}
+  - component: {fileID: 1320704065}
+  - component: {fileID: 1379990378}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6710,15 +6752,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
