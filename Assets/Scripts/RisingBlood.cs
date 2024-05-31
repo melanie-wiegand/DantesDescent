@@ -15,6 +15,11 @@ public class RisingBlood : MonoBehaviour
         StartCoroutine(Rise());
     }
 
+    void Update()
+    {
+        
+    }
+
     // Raises the blood over time
     IEnumerator Rise()
     {
