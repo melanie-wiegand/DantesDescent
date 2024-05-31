@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject torchPromptText; 
 
     public GameObject torchFireEffect; 
+    private bool torchIsLit = false;
     private bool isNearCampfire = false;
 
     private float originalHeight;
@@ -94,16 +95,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(toggleTorchKey) && isNearCampfire)
         {
-            ToggleTorchFire();
+            TurnOnTorchFire();
         }
 
         if (Input.GetMouseButtonDown(0)) // Detect left mouse button click
         {
+            // Trigger attack animation
             animator.SetTrigger("attack");
-            //Check for detection of Wolf GameObject here
-            if(wolfAI != null && wolfAI.inFleePlayerRange && !wolfAI.isFleeing) {
+
+            // Check if the wolf is in range, is not already fleeing, and the torch is lit
+            if(wolfAI != null && wolfAI.inFleePlayerRange && !wolfAI.isFleeing && torchIsLit) {
+                // Trigger the wolf to flee
                 StartCoroutine(wolfAI.FleeCoroutine());
             }
+
+            // Toggle the torch off
+            StartCoroutine(TurnOffTorchFire(0.3f));
         }
 
     }
@@ -211,12 +218,35 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void ToggleTorchFire()
+    private void TurnOnTorchFire()
     {
-        if (torchFireEffect != null)
+        // Check if the fire gameobject is not null and the torch is not lit
+        if (torchFireEffect != null && !torchIsLit)
         {
+            // Trigger animation
             animator.SetTrigger("lightingTorch");
+
+            // Activate the fire effect
             torchFireEffect.SetActive(!torchFireEffect.activeSelf);
+
+            // Set torchIsLit to true
+            torchIsLit = true;
+        }
+    }
+
+    IEnumerator TurnOffTorchFire(float duration)
+    {
+        // Check if the fire gameobject is not null and is lit
+        if(torchFireEffect != null && torchIsLit)
+        {
+            // Pause for animations
+            yield return new WaitForSeconds(duration);
+
+            // Toggle the fire off
+            torchFireEffect.SetActive(false);
+
+            // Set torchIsLit to false
+            torchIsLit = false;
         }
     }
 
