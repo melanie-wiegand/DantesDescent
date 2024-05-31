@@ -20,6 +20,15 @@ public class OxygenController : MonoBehaviour
     // Reference to the blood object
     public GameObject bloodObject;
 
+    // The maximum slowing effect from the water
+    public float maxSlowSpeedModifier = 0.5f;
+
+    // Speed modifier based on water depth
+    private float speedModifier = 1f;
+
+    // Reference to player movement script
+    private PlayerMovement playerMovement;
+
     // The oxygen states
     public enum OxygenState
     {
@@ -38,6 +47,9 @@ public class OxygenController : MonoBehaviour
 
         // Set the value of the slider to full
         oxygenSlider.value = maxOxygen;
+
+        // PlayerMovement component
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -51,6 +63,12 @@ public class OxygenController : MonoBehaviour
 
         // Switch the case
         UpdateOxygen();
+
+        // Check if the player has drowned
+        if(currentState == OxygenState.Underwater)
+        {
+            CheckDrowned();
+        }
     }
 
     public void UpdateOxygen() {
@@ -81,13 +99,13 @@ public class OxygenController : MonoBehaviour
         float bloodY = GetYPosition(bloodObject);
 
         // Check if the blood level is above the player and set isUnderwater
-        if (bloodY > playerY)
+        if (bloodY < playerY)
         {
-            isUnderwater = true;
+            isUnderwater = false;
         }
         else
         {
-            isUnderwater = false;
+            isUnderwater = true;
         }
     }
 
@@ -121,5 +139,30 @@ public class OxygenController : MonoBehaviour
         {
             currentState = OxygenState.Breathing;
         }
+    }
+
+    private void CheckDrowned()
+    {
+        if(oxygenSlider.value <= 0)
+        {
+            Debug.Log("You drowned!");
+            //gameOverScreen.ShowDrownLoss();
+        }
+    }
+
+    // returns a slow modifier
+    public float SlowSpeed()
+    {
+        // The player's Y position
+        float playerY = transform.position.y;
+
+        // The blood's Y position
+        float bloodY = GetYPosition(bloodObject);
+
+        // The depth of the water based on the player position
+        float depth = Mathf.Max(0, bloodY - playerY);
+
+        // The speed modifier
+        return Mathf.Lerp(speedModifier, maxSlowSpeedModifier, depth);
     }
 }

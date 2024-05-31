@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float crouchSpeedMultiplier = 0.5f;
     public float crouchHeightMultiplier = 0.5f;
     public float sprintSpeedMultiplier = 1.5f;
+    public float waterSlowMultiplier;
 
     [Header("Camera")]
     public Camera playerCamera;
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Survival survival;
     public WolfAI wolfAI;
+    private OxygenController oxygenController;
 
     private Animator animator;
 
@@ -57,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<CapsuleCollider>();
         survival = GetComponent<Survival>(); 
         animator = GetComponent<Animator>();
+        oxygenController = GetComponent<OxygenController>();
 
         if (torchFireEffect != null)
         {
@@ -141,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         right.Normalize();
 
         Vector3 moveDirection = forward * verticalInput + right * horizontalInput;
-        float currentSpeed = moveSpeed;
+        float currentSpeed = moveSpeed * oxygenController.SlowSpeed();
 
         if (isSprinting)
         {

@@ -2716,19 +2716,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7044004
+      value: 0.70440054
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06180476
+      value: 0.06180478
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7044007
+      value: 0.70440066
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.061804786
+      value: -0.061804783
       objectReference: {fileID: 0}
     - target: {fileID: 7863288230491389193, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_ScreenX
@@ -7004,6 +7004,7 @@ MonoBehaviour:
   oxygenSlider: {fileID: 1342063916}
   gameOverScreen: {fileID: 0}
   bloodObject: {fileID: 1249845114}
+  maxSlowSpeedModifier: 0.5
   currentState: 0
 --- !u!1 &1379990375
 GameObject:
