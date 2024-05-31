@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject torchPromptText; 
 
     public GameObject torchFireEffect; 
+    public TorchSliderController torchSliderController;
     private bool torchIsLit = false;
     private bool isNearCampfire = false;
 
@@ -60,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         survival = GetComponent<Survival>(); 
         animator = GetComponent<Animator>();
         oxygenController = GetComponent<OxygenController>();
+        torchSliderController = GetComponent<TorchSliderController>();
 
         if (torchFireEffect != null)
         {
@@ -241,10 +243,12 @@ public class PlayerMovement : MonoBehaviour
 
             // Set torchIsLit to true
             torchIsLit = true;
+
+            torchSliderController.LightTorch();
         }
     }
 
-    IEnumerator TurnOffTorchFire(float duration)
+    public IEnumerator TurnOffTorchFire(float duration)
     {
         // Check if the fire gameobject is not null and is lit
         if(torchFireEffect != null && torchIsLit)
@@ -257,6 +261,8 @@ public class PlayerMovement : MonoBehaviour
 
             // Set torchIsLit to false
             torchIsLit = false;
+
+            torchSliderController.ExtinguishTorch();
         }
     }
 

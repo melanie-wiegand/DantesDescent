@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OxygenController : MonoBehaviour
 {
@@ -50,6 +51,9 @@ public class OxygenController : MonoBehaviour
 
         // PlayerMovement component
         playerMovement = GetComponent<PlayerMovement>();
+
+        // Disable slider if necessary
+        DisableSlider(oxygenSlider);
     }
 
     // Update is called once per frame
@@ -164,5 +168,18 @@ public class OxygenController : MonoBehaviour
 
         // The speed modifier
         return Mathf.Lerp(speedModifier, maxSlowSpeedModifier, depth);
+    }
+
+    // Disable a slider if the level isn't level 2
+    public void DisableSlider(Slider slider)
+    {
+        // Get the active scene
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        // If the scene name isn't level 1, disable the slider
+        if (activeScene.name != "Level 2 (Blood)")
+        {
+            slider.gameObject.SetActive(false);
+        }
     }
 }
