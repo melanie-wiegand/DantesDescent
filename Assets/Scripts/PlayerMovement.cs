@@ -144,8 +144,15 @@ public class PlayerMovement : MonoBehaviour
         right.Normalize();
 
         Vector3 moveDirection = forward * verticalInput + right * horizontalInput;
-        float currentSpeed = moveSpeed * oxygenController.SlowSpeed();
+        // Default move speed
+        float currentSpeed = moveSpeed;
 
+        // Apply slow speed multiplier if oxygenController is present
+        if (oxygenController != null)
+        {
+            currentSpeed *= oxygenController.SlowSpeed();
+        }
+        
         if (isSprinting)
         {
             currentSpeed *= sprintSpeedMultiplier;
