@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEditor.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class GameOverScreen : MonoBehaviour
     public ThirdPersonCam thirdPersonCam;
     public PlayerMovement playerMovement;
     public GameObject statusBars;
-    public GameObject JumpscareScreen;
+    public GameObject ZombieJumpscare;
+    public GameObject WolfJumpscare;
     public GameObject WinScreen;
     public GameObject HungerScreen;
     public GameObject TempScreen;
@@ -17,7 +19,8 @@ public class GameOverScreen : MonoBehaviour
     void Start()
     {
         gameOverPanel.SetActive(false);
-        JumpscareScreen.SetActive(false);
+        ZombieJumpscare.SetActive(false);
+        WolfJumpscare.SetActive(false);
         WinScreen.SetActive(false);
         HungerScreen.SetActive(false);
         TempScreen.SetActive(false);
@@ -26,6 +29,18 @@ public class GameOverScreen : MonoBehaviour
     public IEnumerator Jumpscare()
     {
         //StartCoroutine(Jumpscare());
+        GameObject JumpscareScreen;
+
+        if (tag == "Wolf")
+        {
+            JumpscareScreen = WolfJumpscare;
+        }
+
+        else
+        {
+            JumpscareScreen = ZombieJumpscare;
+        }
+
         JumpscareScreen.SetActive(true);
         yield return new WaitForSeconds(3);
         JumpscareScreen.SetActive(false);
@@ -68,15 +83,16 @@ public class GameOverScreen : MonoBehaviour
         thirdPersonCam.UnlockCursor();
     }
 
-    public void RestartFromCheckpoint(Transform checkpoint)
-    {
-        Time.timeScale = 1;
-        GameObject.FindGameObjectWithTag("Player").transform.position = checkpoint.position;
-        gameOverPanel.SetActive(false);
-        thirdPersonCam.LockCursor();
-        playerMovement.canMove = true;
+    //public void RestartFromCheckpoint(Transform checkpoint)
+    //{
+     //   Time.timeScale = 1;
+    //    GameObject.FindGameObjectWithTag("Player").transform.position = checkpoint.position;
+     //   gameOverPanel.SetActive(false);
+     //   thirdPersonCam.LockCursor();
+    //    thirdPersonCam.LockCursor();
+    //    playerMovement.canMove = true;
 
-    }
+    //}
 
     public void RestartGame(Transform startPoint)
     {
@@ -85,6 +101,15 @@ public class GameOverScreen : MonoBehaviour
         gameOverPanel.SetActive(false);
         thirdPersonCam.LockCursor();
         playerMovement.canMove = true;
+    }
+
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1;
+        gameOverPanel.SetActive(false);
+        thirdPersonCam.LockCursor();
+        playerMovement.canMove = true;
+        SceneManager.LoadScene(0);
     }
 
 }

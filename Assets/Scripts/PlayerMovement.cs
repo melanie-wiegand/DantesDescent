@@ -94,6 +94,21 @@ public class PlayerMovement : MonoBehaviour
             HandleInput();
             ManageCrouch();
             ManageSprint();
+            if (Input.GetMouseButtonDown(0)) // Detect left mouse button click
+            {
+                // Trigger attack animation
+                animator.SetTrigger("attack");
+
+                // Check if the wolf is in range, is not already fleeing, and the torch is lit
+                if (wolfAI != null && wolfAI.inFleePlayerRange && !wolfAI.isFleeing && torchIsLit)
+                {
+                    // Trigger the wolf to flee
+                    StartCoroutine(wolfAI.FleeCoroutine());
+                }
+
+                // Toggle the torch off
+                StartCoroutine(TurnOffTorchFire(0.3f));
+            }
         }
 
         if (Input.GetKeyDown(toggleTorchKey) && isNearCampfire)
@@ -101,20 +116,6 @@ public class PlayerMovement : MonoBehaviour
             TurnOnTorchFire();
         }
 
-        if (Input.GetMouseButtonDown(0)) // Detect left mouse button click
-        {
-            // Trigger attack animation
-            animator.SetTrigger("attack");
-
-            // Check if the wolf is in range, is not already fleeing, and the torch is lit
-            if(wolfAI != null && wolfAI.inFleePlayerRange && !wolfAI.isFleeing && torchIsLit) {
-                // Trigger the wolf to flee
-                StartCoroutine(wolfAI.FleeCoroutine());
-            }
-
-            // Toggle the torch off
-            StartCoroutine(TurnOffTorchFire(0.3f));
-        }
 
     }
 
