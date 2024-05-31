@@ -75,7 +75,7 @@ public class OxygenController : MonoBehaviour
     private void CheckUnderwater()
     {
         // The player's Y value
-        float playerY = transform.position.y;
+        float playerY = GetPlayerMaxY() - 0.5f;
 
         // The blood's Y value
         float bloodY = GetYPosition(bloodObject);
@@ -91,10 +91,23 @@ public class OxygenController : MonoBehaviour
         }
     }
 
-    float GetYPosition(GameObject obj)
+    private float GetYPosition(GameObject obj)
     {
         // Return the y position of the game object
         return obj.transform.position.y;
+    }
+
+    private float GetPlayerMaxY()
+    {
+        Collider collider = GetComponent<Collider>();
+        if(collider != null)
+        {
+            return collider.bounds.max.y;
+        }
+        else
+        {
+            return transform.position.y;
+        }
     }
 
     private void SetState()

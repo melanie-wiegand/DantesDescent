@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Survival : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class Survival : MonoBehaviour
  
     void Start()
     {
+        DisableSlider(tempSlider);
         hungerSlider.maxValue = maxHunger;
         hungerSlider.value = maxHunger;
         tempSlider.maxValue = maxTemp;
@@ -99,6 +101,18 @@ public class Survival : MonoBehaviour
     public void ResetTemperatureState()
     {
         currentState = TemperatureState.Default;
+    }
 
+    // Disable a slider if the level isn't level 1
+    public void DisableSlider(Slider slider)
+    {
+        // Get the active scene
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        // If the scene name isn't level 1, disable the slider
+        if (activeScene.name != "Level 1")
+        {
+            slider.gameObject.SetActive(false);
+        }
     }
 }
