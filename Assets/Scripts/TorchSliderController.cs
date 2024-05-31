@@ -6,20 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class TorchSliderController : MonoBehaviour
 {
-    // Maximum torch level
+    // Torch variables
     public float maxTorch = 100f;
-
-    // Reference to torch slider
-    public Slider torchSlider;
-
-    // Indicate if the torch is lit
     public bool isLit = false;
-
-    // How quickly the torch extinguishes
     public float extinguishOT;
 
-    // Reference to player movement script
+    // References
     private PlayerMovement playerMovement;
+    public Slider torchSlider;
+    public Light torchFireLight;
+
+    // Light variables
+    public float initialIntensity;
+    public float endIntensity = 0.0f;
+
+    [SerializeField, Range(0f, 10f)]
+    public float currentLower;
+
+    [SerializeField, Range(0f, 10f)]
+    public float currentUpper;
+
+    [SerializeField, Range(0f, 10f)]
+    float initialLower = 0f;
+
+    [SerializeField, Range(0f, 10f)]
+    float initialUpper = 10f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +42,11 @@ public class TorchSliderController : MonoBehaviour
         // Disable slider if necessary
         DisableSlider(torchSlider);
 
-        // PlayerMovement component
+        // Components
         playerMovement = GetComponent<PlayerMovement>();
+
+        // Set the initial light intensity
+        torchFireLight.intensity = initialIntensity;
     }
 
     // Update is called once per frame
@@ -42,6 +57,8 @@ public class TorchSliderController : MonoBehaviour
 
         // Check if the torch value has reached 0
         CheckExtinguish();
+
+        LightIntensity();
     }
 
     public void LightTorch()
@@ -76,6 +93,18 @@ public class TorchSliderController : MonoBehaviour
             // Extinguish the torch
             StartCoroutine(playerMovement.TurnOffTorchFire(0.3f));
         }
+    }
+
+    private void LightIntensity()
+    {
+        // Lerp the light intensity based on the slider value
+        float normalizedSliderValue = torchSlider.value / 100.0f;
+
+        currentLower = Mathf.Lerp(endIntensity, initialLower, normalizedSliderValue);
+
+        currentUpper = Mathf.Lerp(endIntensity, initialUpper, normalizedSliderValue);
+
+        torchFireLight.intensity = Random.Range(currentLower, currentUpper);
     }
 
     // Disable a slider if the level isn't level 3
