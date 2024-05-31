@@ -12,6 +12,8 @@ TagManager:
   - whatIsGround
   - Flashlight
   - Wolf
+  - StartPoint
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

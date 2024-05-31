@@ -8,7 +8,14 @@ public class EnemyDetection : MonoBehaviour
     {
         if (other.CompareTag("Player")) 
         {
-            StartCoroutine(gameOverScreen.Jumpscare());
+            if (gameObject.CompareTag("Wolf"))
+            {
+                StartCoroutine(gameOverScreen.WJumpscare());
+            }
+            else
+            {
+                StartCoroutine(gameOverScreen.ZJumpscare());
+            }
             //gameOverScreen.Jumpscare();
 
             gameOverScreen.ShowGameOver();
