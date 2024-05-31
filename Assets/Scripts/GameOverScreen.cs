@@ -26,25 +26,24 @@ public class GameOverScreen : MonoBehaviour
         TempScreen.SetActive(false);
     }
 
-    public IEnumerator Jumpscare()
+    public IEnumerator ZJumpscare()
     {
         //StartCoroutine(Jumpscare());
-        GameObject JumpscareScreen;
 
-        if (tag == "Wolf")
-        {
-            JumpscareScreen = WolfJumpscare;
-        }
-
-        else
-        {
-            JumpscareScreen = ZombieJumpscare;
-        }
-
-        JumpscareScreen.SetActive(true);
+        ZombieJumpscare.SetActive(true);
         yield return new WaitForSeconds(3);
-        JumpscareScreen.SetActive(false);
-        StopCoroutine(Jumpscare());
+        ZombieJumpscare.SetActive(false);
+        StopCoroutine(ZJumpscare());
+    }
+
+    public IEnumerator WJumpscare()
+    {
+        //StartCoroutine(Jumpscare());
+
+        WolfJumpscare.SetActive(true);
+        yield return new WaitForSeconds(3);
+        WolfJumpscare.SetActive(false);
+        StopCoroutine(WJumpscare());
     }
 
     public void ShowGameOver()

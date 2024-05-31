@@ -1108,8 +1108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 460418388}
-  thirdPersonCam: {fileID: 0}
-  playerMovement: {fileID: 0}
+  thirdPersonCam: {fileID: 1777310376}
+  playerMovement: {fileID: 423778819}
   statusBars: {fileID: 1210530089}
   ZombieJumpscare: {fileID: 1856157479}
   WolfJumpscare: {fileID: 891541565}
@@ -2723,6 +2723,17 @@ MonoBehaviour:
   tempSlider: {fileID: 467908899}
   gameOverScreen: {fileID: 0}
   currentState: 0
+--- !u!114 &423778819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7402652997055332998, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+  m_PrefabInstance: {fileID: 92400291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52a6fb18f3124568b05bf52817cba91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &460418388
 GameObject:
   m_ObjectHideFlags: 0
@@ -10555,6 +10566,17 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
+--- !u!114 &1777310376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1278766966059227332, guid: e26557fd114e1486480084844ed36d27, type: 3}
+  m_PrefabInstance: {fileID: 473779190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777310374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28beef61d807945afad1c90de2097d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1810787066 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 122790, guid: c115264a3bdfe40778535c97bd863f42, type: 3}
