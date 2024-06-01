@@ -30,7 +30,6 @@ public class Menu : MonoBehaviour
     {
         BlackScreen.SetActive(true);
         SceneManager.LoadScene(5);
-        //working fraud level
     }
 
     public void ViolenceStart()
