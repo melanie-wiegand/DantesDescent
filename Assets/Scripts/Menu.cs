@@ -29,7 +29,7 @@ public class Menu : MonoBehaviour
     public void FraudStart()
     {
         BlackScreen.SetActive(true);
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(3);
     }
 
     public void ViolenceStart()
