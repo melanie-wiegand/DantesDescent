@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.015016265, g: 0.009000089, b: 0.01400289, a: 1}
+  m_IndirectSpecularColor: {r: 0.015016278, g: 0.0090001095, b: 0.014003063, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1061,8 +1061,13 @@ MonoBehaviour:
   thirdPersonCam: {fileID: 1777310376}
   playerMovement: {fileID: 1360375823}
   statusBars: {fileID: 1210530089}
+<<<<<<< Updated upstream
   ZombieJumpscare: {fileID: 0}
   WolfJumpscare: {fileID: 0}
+=======
+  ZombieJumpscare: {fileID: 1856157479}
+  WolfJumpscare: {fileID: 1856157479}
+>>>>>>> Stashed changes
   WinScreen: {fileID: 1207347288}
   HungerScreen: {fileID: 672081218}
   TempScreen: {fileID: 1742595880}
