@@ -112,6 +112,10 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(TurnOffTorchFire(0.3f));
             }
         }
+        else
+        {
+            StopAllMovement();
+        }
 
         if (Input.GetKeyDown(toggleTorchKey) && isNearCampfire)
         {
@@ -127,6 +131,10 @@ public class PlayerMovement : MonoBehaviour
         {
             MovePlayer();
             RotateToCursor();
+        }
+        else
+        {
+            StopAllMovement();
         }
     }
 
@@ -236,19 +244,38 @@ public class PlayerMovement : MonoBehaviour
         // Check if the fire gameobject is not null and the torch is not lit
         if (torchFireEffect != null && !torchIsLit)
         {
-            // Trigger animation
-            animator.SetTrigger("lightingTorch");
-
-            // Activate the fire effect
-            torchFireEffect.SetActive(!torchFireEffect.activeSelf);
-
-            // Set torchIsLit to true
-            torchIsLit = true;
-
-            if(torchSliderController != null) {
-                torchSliderController.LightTorch();
-            }
+            StartCoroutine(LightTorchCoroutine());
         }
+    }
+
+    IEnumerator LightTorchCoroutine()
+    {
+        // Disable player movement
+        canMove = false;
+
+        // Stop all current movement
+        StopAllMovement();
+
+        // Trigger torch lighting animation
+        animator.SetTrigger("lightingTorch");
+
+        // Activate the fire effect
+        torchFireEffect.SetActive(true);
+
+        // Pause for animation
+        yield return new WaitForSeconds(2.0f);
+
+        // Set torchIsLit to true
+        torchIsLit = true;
+
+        // If torchSliderController is active (darkness level), set slider effects
+        if (torchSliderController != null)
+        {
+            torchSliderController.LightTorch();
+        }
+
+        // Enable player movement
+        canMove = true;
     }
 
     public IEnumerator TurnOffTorchFire(float duration)
