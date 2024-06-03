@@ -697,7 +697,8 @@ MonoBehaviour:
   thirdPersonCam: {fileID: 0}
   playerMovement: {fileID: 0}
   statusBars: {fileID: 1210530089}
-  JumpscareScreen: {fileID: 1856157479}
+  ZombieJumpscare: {fileID: 0}
+  WolfJumpscare: {fileID: 0}
   WinScreen: {fileID: 1207347288}
   HungerScreen: {fileID: 1214218602}
   TempScreen: {fileID: 855528986}
@@ -8615,7 +8616,8 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5078383143340347956, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
