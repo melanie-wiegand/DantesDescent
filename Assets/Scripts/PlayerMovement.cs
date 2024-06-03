@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         survival = GetComponent<Survival>(); 
         animator = GetComponent<Animator>();
         oxygenController = GetComponent<OxygenController>();
-        torchSliderController = GetComponent<TorchSliderController>();
+//        torchSliderController = GetComponent<TorchSliderController>();
 
         if (torchFireEffect != null)
         {
@@ -245,7 +245,9 @@ public class PlayerMovement : MonoBehaviour
             // Set torchIsLit to true
             torchIsLit = true;
 
-            torchSliderController.LightTorch();
+            if(torchSliderController != null) {
+                torchSliderController.LightTorch();
+            }
         }
     }
 
@@ -263,7 +265,9 @@ public class PlayerMovement : MonoBehaviour
             // Set torchIsLit to false
             torchIsLit = false;
 
-            torchSliderController.ExtinguishTorch();
+            if(torchSliderController != null) {
+                torchSliderController.ExtinguishTorch();
+            }
         }
     }
 
