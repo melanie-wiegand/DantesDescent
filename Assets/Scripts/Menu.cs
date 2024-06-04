@@ -16,7 +16,6 @@ public class Menu : MonoBehaviour
     public void PurgatoryStart()
     {
         BlackScreen.SetActive(true);
-        //StartCoroutine(FadeTextToFullAlpha(1f, text));
         SceneManager.LoadScene(1);
     }
 
