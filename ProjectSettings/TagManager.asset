@@ -14,6 +14,7 @@ TagManager:
   - Wolf
   - StartPoint
   - CheckPoint
+  - SliderInstruc
   layers:
   - Default
   - TransparentFX

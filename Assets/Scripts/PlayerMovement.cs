@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     private Survival survival;
     public WolfAI wolfAI;
     private OxygenController oxygenController;
+    public TutorialScript tutorialScript;
 
     private Animator animator;
 
@@ -341,6 +342,11 @@ public class PlayerMovement : MonoBehaviour
             }
             // Change (survival) TempOT to -1f to warm the player
             survival.SetNearCampfireState();
+        }
+
+        if(other.gameObject.CompareTag("SliderInstruc"))
+        {
+            tutorialScript.SetSliderState();
         }
     }
 
