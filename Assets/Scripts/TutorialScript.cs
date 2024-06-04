@@ -8,6 +8,21 @@ public class TutorialScript : MonoBehaviour
 
     public KeyCode nextKey = KeyCode.Return;
 
+    public GameObject food;
+
+    public GameObject hungerSlider;
+
+    public GameObject tempSlider;
+
+    public GameObject oxygenSlider;
+
+    public GameObject torchSlider;
+
+    public GameObject hail;
+    public HailController hailController;
+
+    public GameObject campfire;
+
     public enum InstructionState
     {
         Move,
@@ -37,24 +52,29 @@ public class TutorialScript : MonoBehaviour
     public GameObject torchToggleInstructions;
     public GameObject torchSwingInstructions;
     public GameObject mazeEndInstructions;
+    public GameObject pressEnter;
 
     // Start is called before the first frame update
     void Start()
     {
         HideAllInstructions();
+        food.SetActive(false);
+        hail.SetActive(false);
+        campfire.SetActive(false);
+        HideSliders();
         currentInstruction = moveInstructions;
         ShowCurrentInstruction();
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(nextKey))
+        if(Input.GetKeyDown(nextKey) && currentState != InstructionState.Move && currentState != InstructionState.HungerSlider && currentState != InstructionState.TorchToggle && currentState != InstructionState.TorchSwing && currentState != InstructionState.MazeEnd)
         {
             MoveToNextInstruction();
         }
     }
 
-    private void MoveToNextInstruction()
+    public void MoveToNextInstruction()
     {
         HideCurrentInstruction();
 
@@ -70,57 +90,87 @@ public class TutorialScript : MonoBehaviour
             // Showing move instruction
             case InstructionState.Move:
                 currentInstruction = moveInstructions;
+                pressEnter.SetActive(false);
                 break;
 
             // Showing slider instruction
             case InstructionState.Slider:
                 currentInstruction = sliderInstructions;
+                ShowPressEnter();
+                hungerSlider.SetActive(true);
+                tempSlider.SetActive(true);
                 break;
 
             // Showing hunger slider instruction
             case InstructionState.HungerSlider:
                 currentInstruction = hungerSliderInstructions;
+                pressEnter.SetActive(false);
                 currentInstruction.SetActive(true);
+                food.SetActive(true);
+                tempSlider.SetActive(false);
                 break;
 
             // Showing temp slider instruction
             case InstructionState.TempSlider:
+                tempSlider.SetActive(true);
+                ShowPressEnter();
                 currentInstruction = tempSliderInstructions;
+                hungerSlider.SetActive(false);
                 break;
 
             // Showing hail instruction
             case InstructionState.Hail:
                 currentInstruction = hailInstructions;
+                ShowPressEnter();
+                tempSlider.SetActive(true);
+                hail.SetActive(true);
+                hailController.enabled = true;
                 break;
 
             // Showing campfire instruction
             case InstructionState.Campfire:
                 currentInstruction = campfireInstructions;
+                ShowPressEnter();
+                hail.SetActive(false);
+                hailController.enabled = false;
+                campfire.SetActive(true);
                 break;
 
             // Showing oxygen instruction
             case InstructionState.Oxygen:
                 currentInstruction = oxygenInstructions;
+                ShowPressEnter();
+                campfire.SetActive(false);
+                tempSlider.SetActive(false);
+                oxygenSlider.SetActive(true);
                 break;
 
             // Showing torch slider instruction
             case InstructionState.TorchSlider:
                 currentInstruction = torchSliderInstructions;
+                ShowPressEnter();
+                campfire.SetActive(true);
+                oxygenSlider.SetActive(false);
+                torchSlider.SetActive(true);
                 break;
 
             // Showing torch toggle instruction
             case InstructionState.TorchToggle:
                 currentInstruction = torchToggleInstructions;
+                pressEnter.SetActive(false);
                 break;
 
             // Showing torch swing instruction
             case InstructionState.TorchSwing:
                 currentInstruction = torchSwingInstructions;
+                pressEnter.SetActive(false);
                 break;
 
             // Showing maze end instruction
             case InstructionState.MazeEnd:
                 currentInstruction = mazeEndInstructions;
+                pressEnter.SetActive(false);
+                torchSlider.SetActive(false);
                 break;
         }
 
@@ -139,6 +189,11 @@ public class TutorialScript : MonoBehaviour
         }
     }
 
+    private void ShowPressEnter()
+    {
+        pressEnter.SetActive(true);
+    }
+
     private void HideAllInstructions()
     {
         moveInstructions.SetActive(false);
@@ -152,13 +207,14 @@ public class TutorialScript : MonoBehaviour
         torchToggleInstructions.SetActive(false);
         torchSwingInstructions.SetActive(false);
         mazeEndInstructions.SetActive(false);
+        pressEnter.SetActive(false);
     }
 
-    public void SetSliderState()
+    private void HideSliders()
     {
-        HideCurrentInstruction();
-        currentState = InstructionState.Slider;
-        currentInstruction = sliderInstructions;
-        ShowCurrentInstruction();
+        hungerSlider.SetActive(false);
+        tempSlider.SetActive(false);
+        oxygenSlider.SetActive(false);
+        torchSlider.SetActive(false);
     }
 }

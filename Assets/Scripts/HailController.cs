@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HailController : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class HailController : MonoBehaviour
     }
 
     // Method to start the hail cycle
-    private void StartCycle()
+    public void StartCycle()
     {
         // Set isCycling flag to true
         isCycling = true;
@@ -52,8 +53,13 @@ public class HailController : MonoBehaviour
         // Set TempOT to -0.5f
         survival.ResetTemperatureState();        
 
+        Scene activeScene = SceneManager.GetActiveScene();
+
         // Invoke the StartCycle method after the break duration
-        Invoke("StartCycle", breakDuration);
+        if(activeScene.name != "Purgatory Tutorial")
+        {
+            Invoke("StartCycle", breakDuration);
+        }
     }
 
     // Method to reset the opacity of the particle system

@@ -177,7 +177,7 @@ public class OxygenController : MonoBehaviour
         Scene activeScene = SceneManager.GetActiveScene();
 
         // If the scene name isn't level 1, disable the slider
-        if (activeScene.name != "Level 2 (Blood)")
+        if (activeScene.name != "Level 2 (Blood)" || activeScene.name != "Purgatory Tutorial")
         {
             slider.gameObject.SetActive(false);
         }

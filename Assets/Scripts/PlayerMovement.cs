@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         survival = GetComponent<Survival>(); 
         animator = GetComponent<Animator>();
         oxygenController = GetComponent<OxygenController>();
-//        torchSliderController = GetComponent<TorchSliderController>();
+        torchSliderController = GetComponent<TorchSliderController>();
 
         if (torchFireEffect != null)
         {
@@ -111,6 +112,11 @@ public class PlayerMovement : MonoBehaviour
 
                 // Toggle the torch off
                 StartCoroutine(TurnOffTorchFire(0.3f));
+
+                if(tutorialScript != null && tutorialScript.currentState == TutorialScript.InstructionState.TorchSwing)
+                {
+                    tutorialScript.MoveToNextInstruction();
+                }
             }
         }
         else
@@ -272,11 +278,18 @@ public class PlayerMovement : MonoBehaviour
         // If torchSliderController is active (darkness level), set slider effects
         if (torchSliderController != null)
         {
+            torchSliderController.torchSlider.value = torchSliderController.maxTorch;
             torchSliderController.LightTorch();
         }
 
         // Enable player movement
         canMove = true;
+
+        // Move to the next instruction in the tutorial
+        if(tutorialScript != null && tutorialScript.currentState == TutorialScript.InstructionState.TorchToggle)
+            {
+                tutorialScript.MoveToNextInstruction();
+            }
     }
 
     public IEnumerator TurnOffTorchFire(float duration)
@@ -319,6 +332,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(other.gameObject.CompareTag("Ham"))
         {
+            // Move to next step in tutorial
+            if(tutorialScript != null && tutorialScript.currentState == TutorialScript.InstructionState.HungerSlider) {
+                tutorialScript.MoveToNextInstruction();
+            }
+
             // Disable colletable
             other.gameObject.SetActive(false);
 
@@ -336,7 +354,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.CompareTag("Campfire"))
         {
             isNearCampfire = true;
-            if (torchPromptText != null)
+            if (torchPromptText != null && tutorialScript == null)
             {
                 torchPromptText.SetActive(true); // Show the prompt text when near a campfire
             }
@@ -346,7 +364,8 @@ public class PlayerMovement : MonoBehaviour
 
         if(other.gameObject.CompareTag("SliderInstruc"))
         {
-            tutorialScript.SetSliderState();
+            other.gameObject.SetActive(false);
+            tutorialScript.MoveToNextInstruction();
         }
     }
 
