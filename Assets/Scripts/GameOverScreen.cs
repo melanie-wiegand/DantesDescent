@@ -14,7 +14,7 @@ public class GameOverScreen : MonoBehaviour
     public GameObject WinScreen;
     public GameObject HungerScreen;
     public GameObject TempScreen;
-
+    public bool GameOver;
 
     void Start()
     {
@@ -24,6 +24,7 @@ public class GameOverScreen : MonoBehaviour
         WinScreen.SetActive(false);
         HungerScreen.SetActive(false);
         TempScreen.SetActive(false);
+        GameOver = false;
     }
 
     public IEnumerator ZJumpscare()
@@ -96,10 +97,12 @@ public class GameOverScreen : MonoBehaviour
     public void RestartGame(Transform startPoint)
     {
         Time.timeScale = 1;
-        GameObject.FindGameObjectWithTag("Player").transform.position = startPoint.position;
+       // GameObject.FindGameObjectWithTag("Player").transform.position = startPoint.position;
         gameOverPanel.SetActive(false);
         thirdPersonCam.LockCursor();
         playerMovement.canMove = true;
+        GameOver = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ReturnToMenu()

@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class EnemyDetection : MonoBehaviour
 {
-    public GameOverScreen gameOverScreen; 
+    public GameOverScreen gameOverScreen;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player") &&  gameOverScreen.GameOver == false) 
         {
+
+            gameOverScreen.GameOver = true;
             if (gameObject.CompareTag("Wolf"))
             {
                 StartCoroutine(gameOverScreen.WJumpscare());
