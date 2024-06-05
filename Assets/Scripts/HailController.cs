@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HailController : MonoBehaviour
 {
@@ -38,25 +37,28 @@ public class HailController : MonoBehaviour
         float cycleDuration = Random.Range(cycleDurationMin, cycleDurationMax);
 
         // Invoke the EndCycle method after the cycle duration
-        Invoke("EndCycle", cycleDuration);
+        if(hailParticle.activeSelf)
+        {
+            Invoke("EndCycle", cycleDuration);
+        }
     }
 
         // Method to end the hail cycle
     private void EndCycle()
     {
         // Start fading out the particle system
-        FadeOut();
-
+        if(hailParticle.activeSelf)
+        {
+            FadeOut();
+        }
         // Set isCycling flag to false
         isCycling = false;
 
         // Set TempOT to -0.5f
         survival.ResetTemperatureState();        
 
-        Scene activeScene = SceneManager.GetActiveScene();
-
         // Invoke the StartCycle method after the break duration
-        if(activeScene.name != "Purgatory Tutorial")
+        if(hailParticle.activeSelf)
         {
             Invoke("StartCycle", breakDuration);
         }
@@ -87,7 +89,10 @@ public class HailController : MonoBehaviour
         ParticleSystem.MainModule mainModule = particleSystem.main;
 
         // Start a coroutine to gradually reduce the opacity of the particle system
-        StartCoroutine(FadeOutCoroutine(mainModule));
+        if(hailParticle.activeSelf)
+        {
+            StartCoroutine(FadeOutCoroutine(mainModule));
+        }
     }
 
     // Coroutine to gradually reduce the opacity of the particle system

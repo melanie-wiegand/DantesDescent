@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("UI Elements")]
     public GameObject torchPromptText; 
 
+    // Fire variables
     public GameObject torchFireEffect; 
     public TorchSliderController torchSliderController;
     private bool torchIsLit = false;
@@ -40,9 +41,11 @@ public class PlayerMovement : MonoBehaviour
     private float originalScaleY;
     private Vector3 moveDirection = Vector3.zero;
 
+    // Player object variables
     private Rigidbody rb;
     private CapsuleCollider playerCollider;
 
+    // Script references
     private Survival survival;
     public WolfAI wolfAI;
     private OxygenController oxygenController;
@@ -50,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
 
+    // Movement variables
     public bool canMove = true;
     float horizontalInput;
     float verticalInput;
