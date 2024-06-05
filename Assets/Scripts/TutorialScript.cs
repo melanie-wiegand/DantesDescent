@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class TutorialScript : MonoBehaviour
 {
+    // Game objects
     public GameObject currentInstruction;
-
     public KeyCode nextKey = KeyCode.Return;
-
     public GameObject food;
-
     public GameObject hungerSlider;
-
     public GameObject tempSlider;
-
     public GameObject oxygenSlider;
-
     public GameObject torchSlider;
-
     public GameObject hail;
+    public GameObject campfire;
+    public GameObject endZone;
+
+    // Script references
     public HailController hailController;
 
-    public GameObject campfire;
-
+    // Instruction states
     public enum InstructionState
     {
         Move,
@@ -38,8 +35,10 @@ public class TutorialScript : MonoBehaviour
         MazeEnd
     }
 
+    // Current state
     public InstructionState currentState = InstructionState.Move;
 
+    // Text game objects
     [Header("UI Elements")]
     public GameObject moveInstructions;
     public GameObject sliderInstructions;
@@ -57,29 +56,44 @@ public class TutorialScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Hide the text instructions
         HideAllInstructions();
+
+        // Hide other objects
         food.SetActive(false);
         hail.SetActive(false);
         campfire.SetActive(false);
+        endZone.SetActive(false);
+
+        // Hide the sliders
         HideSliders();
+
+        // Set the current instruction to the first instruction
         currentInstruction = moveInstructions;
+
+        // Show the current instruction
         ShowCurrentInstruction();
     }
 
     void Update()
     {
+        // If the player presses the next key and the state isn't one of the instructions that requires a specific action
         if(Input.GetKeyDown(nextKey) && currentState != InstructionState.Move && currentState != InstructionState.HungerSlider && currentState != InstructionState.TorchToggle && currentState != InstructionState.TorchSwing && currentState != InstructionState.MazeEnd)
         {
+            // Move to the next instruction
             MoveToNextInstruction();
         }
     }
 
     public void MoveToNextInstruction()
     {
+        // Hide the current instruction
         HideCurrentInstruction();
 
+        // Set the current state to the next state in the InstructionState enum
         currentState = (InstructionState)(((int)currentState + 1) % System.Enum.GetValues(typeof(InstructionState)).Length);
 
+        // Show the new instruction
         ShowCurrentInstruction();
     }
 
@@ -171,6 +185,8 @@ public class TutorialScript : MonoBehaviour
                 currentInstruction = mazeEndInstructions;
                 pressEnter.SetActive(false);
                 torchSlider.SetActive(false);
+                campfire.SetActive(false);
+                endZone.SetActive(true);
                 break;
         }
 

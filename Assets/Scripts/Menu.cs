@@ -12,6 +12,8 @@ public class Menu : MonoBehaviour
     public void Start()
     {
         BlackScreen.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void PurgatoryStart()
     {
