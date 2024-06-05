@@ -2941,7 +2941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1877418813439685587, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_Orbits.Array.data[2].m_Height
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1877418813439685587, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_Orbits.Array.data[2].m_Radius
@@ -3065,15 +3065,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70440054
+      value: 0.7044006
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.06180478
+      value: 0.061804783
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70440066
+      value: 0.7044006
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.z
@@ -9410,9 +9410,9 @@ MonoBehaviour:
   m_CameraRadius: 0.5
   m_Strategy: 1
   m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0
+  m_SmoothingTime: 0.4
+  m_Damping: 2
+  m_DampingWhenOccluded: 5
   m_OptimalTargetDistance: 0
 --- !u!114 &1777310376 stripped
 MonoBehaviour:

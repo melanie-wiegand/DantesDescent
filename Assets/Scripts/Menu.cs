@@ -33,7 +33,7 @@ public class Menu : MonoBehaviour
 
     public void ViolenceStart()
     {
-        // BlackScreen.SetActive(true);
+        BlackScreen.SetActive(true);
         SceneManager.LoadScene(4);
     }
 
