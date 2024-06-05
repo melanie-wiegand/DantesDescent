@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEditor.UI;
+using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {

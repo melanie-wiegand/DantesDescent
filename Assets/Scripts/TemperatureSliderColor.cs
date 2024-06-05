@@ -7,8 +7,8 @@ public class TemperatureSliderColor : MonoBehaviour
 {
     public Slider TemperatureSlider;
     public Image TemperatureSliderFill;
-    public Color orangeColor = new Color(1f, 0.5f, 0f);
-    public Color blueColor = new Color(73f / 255f, 132f / 255f, 184f / 255f);
+    public Color orangeColor; /* = new Color(1f, 0.5f, 0f); */
+    public Color blueColor; /* = new Color(73f / 255f, 132f / 255f, 184f / 255f); */
  
     // Update is called once per frame
     void Update()
