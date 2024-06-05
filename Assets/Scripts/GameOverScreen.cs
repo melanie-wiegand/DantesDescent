@@ -94,7 +94,7 @@ public class GameOverScreen : MonoBehaviour
 
     //}
 
-    public void RestartGame(Transform startPoint)
+    public void RestartGame()
     {
         Time.timeScale = 1;
        // GameObject.FindGameObjectWithTag("Player").transform.position = startPoint.position;
