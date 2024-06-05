@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0151158385, g: 0.00905603, b: 0.01408376, a: 1}
+  m_IndirectSpecularColor: {r: 0.015016265, g: 0.009000089, b: 0.01400289, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1066,6 +1066,7 @@ MonoBehaviour:
   WinScreen: {fileID: 1207347288}
   HungerScreen: {fileID: 672081218}
   TempScreen: {fileID: 1742595880}
+  GameOver: 0
 --- !u!114 &164564793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2286,7 +2287,7 @@ RectTransform:
   m_GameObject: {fileID: 382327740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1, z: 2}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 989160190}
@@ -2497,7 +2498,7 @@ RectTransform:
   m_GameObject: {fileID: 402587785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 2, z: 2}
+  m_LocalScale: {x: 1.95, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 371021504}
@@ -2813,8 +2814,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1394, y: -680}
-  m_SizeDelta: {x: 212.8918, y: 32.0896}
+  m_AnchoredPosition: {x: -465, y: -257.9}
+  m_SizeDelta: {x: 100, y: 15}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &467908899
 MonoBehaviour:
@@ -3065,19 +3066,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7044006
+      value: 0.7044004
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.061804783
+      value: 0.06180476
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7044006
+      value: 0.7044007
       objectReference: {fileID: 0}
     - target: {fileID: 7828247884973192771, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.061804783
+      value: -0.061804786
       objectReference: {fileID: 0}
     - target: {fileID: 7863288230491389193, guid: e26557fd114e1486480084844ed36d27, type: 3}
       propertyPath: m_ScreenX
@@ -3377,8 +3378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1394, y: -564.17914}
-  m_SizeDelta: {x: 212.8918, y: 32.0896}
+  m_AnchoredPosition: {x: -485, y: -219.9}
+  m_SizeDelta: {x: 100, y: 15}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &586326330
 MonoBehaviour:
@@ -6871,7 +6872,7 @@ RectTransform:
   m_GameObject: {fileID: 1178719366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 950112505}
@@ -7216,10 +7217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 0.65
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -7682,8 +7683,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1394, y: -680}
-  m_SizeDelta: {x: 212.8918, y: 32.0896}
+  m_AnchoredPosition: {x: -465, y: -257.9}
+  m_SizeDelta: {x: 100, y: 15}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1342063916
 MonoBehaviour:
