@@ -114,4 +114,9 @@ public class GameOverScreen : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void GoNextLevel()
+    {
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % 5);
+    }
+
 }
