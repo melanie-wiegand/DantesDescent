@@ -596,8 +596,8 @@ MonoBehaviour:
   thirdPersonCam: {fileID: 2031227644}
   playerMovement: {fileID: 303704546}
   statusBars: {fileID: 1210530089}
-  ZombieJumpscare: {fileID: 0}
-  WolfJumpscare: {fileID: 0}
+  ZombieJumpscare: {fileID: 1624180631}
+  WolfJumpscare: {fileID: 1624180631}
   WinScreen: {fileID: 1670009444}
   HungerScreen: {fileID: 774183874}
   TempScreen: {fileID: 1676907079}
@@ -8277,7 +8277,7 @@ PrefabInstance:
       addedObject: {fileID: 1627584829}
     - targetCorrespondingSourceObject: {fileID: 8063432001253059194, guid: b89fe99c023989c4c987cc8ec02faf19, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1627584833}
+      addedObject: {fileID: 1627584834}
   m_SourcePrefab: {fileID: 100100000, guid: b89fe99c023989c4c987cc8ec02faf19, type: 3}
 --- !u!1 &1627584828 stripped
 GameObject:
@@ -8300,8 +8300,8 @@ MonoBehaviour:
   thirdPersonCam: {fileID: 2031227644}
   playerCamera: {fileID: 367108135}
   rotationSpeed: 4
---- !u!64 &1627584833
-MeshCollider:
+--- !u!65 &1627584834
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -8318,10 +8318,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1670009444
 GameObject:
   m_ObjectHideFlags: 0
