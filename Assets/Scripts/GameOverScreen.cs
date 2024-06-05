@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEditor.UI;
+using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
@@ -73,6 +73,7 @@ public class GameOverScreen : MonoBehaviour
         playerMovement.StopAllMovement();
         thirdPersonCam.UnlockCursor();
     }
+
     
     public void ShowWin()
     {
@@ -94,7 +95,7 @@ public class GameOverScreen : MonoBehaviour
 
     //}
 
-    public void RestartGame(Transform startPoint)
+    public void RestartGame()
     {
         Time.timeScale = 1;
        // GameObject.FindGameObjectWithTag("Player").transform.position = startPoint.position;
@@ -112,6 +113,11 @@ public class GameOverScreen : MonoBehaviour
         thirdPersonCam.LockCursor();
         playerMovement.canMove = true;
         SceneManager.LoadScene(0);
+    }
+
+    public void GoNextLevel()
+    {
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % 5);
     }
 
 }

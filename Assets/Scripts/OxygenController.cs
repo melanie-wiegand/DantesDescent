@@ -151,6 +151,7 @@ public class OxygenController : MonoBehaviour
         {
             Debug.Log("You drowned!");
             //gameOverScreen.ShowDrownLoss();
+            gameOverScreen.ShowTempLoss();
         }
     }
 
@@ -177,9 +178,13 @@ public class OxygenController : MonoBehaviour
         Scene activeScene = SceneManager.GetActiveScene();
 
         // If the scene name isn't level 1, disable the slider
-        if (activeScene.name != "Level 2 (Blood)" || activeScene.name != "Purgatory Tutorial")
+        if (activeScene.name != "Level 2 (Blood)")
         {
             slider.gameObject.SetActive(false);
+        }
+        else
+        {
+            slider.gameObject.SetActive(true);
         }
     }
 }
