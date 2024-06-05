@@ -57,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
+
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         playerCollider = GetComponent<CapsuleCollider>();
@@ -98,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
             HandleInput();
             ManageCrouch();
             ManageSprint();
+
             if (Input.GetMouseButtonDown(0)) // Detect left mouse button click
             {
                 // Trigger attack animation
@@ -136,8 +139,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            MovePlayer();
             RotateToCursor();
+            MovePlayer();
         }
         else
         {
@@ -228,6 +231,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isSprinting = false;
         }
+        RotateToCursor();
     }
 
     private void ManageCrouch()
@@ -235,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(crouchKey))
         {
             playerCollider.height = originalHeight * crouchHeightMultiplier;
-            playerCollider.center = new Vector3(playerCollider.center.x, playerCollider.center.y * -0.5f, playerCollider.center.z);
+            playerCollider.center = new Vector3(playerCollider.center.x, playerCollider.center.y * 0.5f, playerCollider.center.z);
             transform.localScale = new Vector3(transform.localScale.x, originalScaleY * crouchHeightMultiplier, transform.localScale.z);
         }
         else
