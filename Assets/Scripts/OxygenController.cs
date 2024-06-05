@@ -151,6 +151,7 @@ public class OxygenController : MonoBehaviour
         {
             Debug.Log("You drowned!");
             //gameOverScreen.ShowDrownLoss();
+            gameOverScreen.ShowTempLoss();
         }
     }
 

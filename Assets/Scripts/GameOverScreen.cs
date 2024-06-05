@@ -73,6 +73,7 @@ public class GameOverScreen : MonoBehaviour
         playerMovement.StopAllMovement();
         thirdPersonCam.UnlockCursor();
     }
+
     
     public void ShowWin()
     {
