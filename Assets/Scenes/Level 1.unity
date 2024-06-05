@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.11841433, g: 0.18280503, b: 0.32895905, a: 1}
+  m_IndirectSpecularColor: {r: 0.11834408, g: 0.18282518, b: 0.3290234, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9735,7 +9735,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5e8d5aca2c5f14e3c99a344c2c9887ef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eff9bd1fc3971e7499e63b512110dfef, type: 2}
+      objectReference: {fileID: 2100000, guid: 0561f9f16330f480e9b4f85d11c23ff6, type: 2}
     - target: {fileID: 919132149155446097, guid: 5e8d5aca2c5f14e3c99a344c2c9887ef, type: 3}
       propertyPath: m_Name
       value: level1maze
