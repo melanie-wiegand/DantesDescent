@@ -182,12 +182,14 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed *= sprintSpeedMultiplier;
         }
 
-        if (Input.GetKey(crouchKey)) {
-            currentSpeed *= crouchSpeedMultiplier;
-            animator.SetBool("IsCrouching", true);
-        } else {
-            animator.SetBool("IsCrouching", false);
-        }
+
+        //Removed crouch, no longer has a purpose
+        //if (Input.GetKey(crouchKey)) {
+        //    currentSpeed *= crouchSpeedMultiplier;
+        //    animator.SetBool("IsCrouching", true);
+        //} else {
+        //    animator.SetBool("IsCrouching", false);
+        //}
 
         animator.SetFloat("Speed", moveDirection.magnitude);
         animator.SetFloat("MoveX", horizontalInput);
@@ -210,12 +212,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Die()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 4)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        }
+ 
+       // transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+
         transform.rotation = Quaternion.Euler(270f, 0f, 0f);
         animator.enabled = false;
+        
     }
 
     private void RotateToCursor()
