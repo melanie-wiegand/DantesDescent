@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         if (canMove)
         {
             HandleInput();
-            ManageCrouch();
+            //ManageCrouch();
             ManageSprint();
 
             if (Input.GetMouseButtonDown(0)) // Detect left mouse button click
@@ -249,21 +249,21 @@ public class PlayerMovement : MonoBehaviour
         RotateToCursor();
     }
 
-    private void ManageCrouch()
-    {
-        if (Input.GetKey(crouchKey))
-        {
-            playerCollider.height = originalHeight * crouchHeightMultiplier;
-            playerCollider.center = new Vector3(playerCollider.center.x, playerCollider.center.y * 0.5f, playerCollider.center.z);
-            transform.localScale = new Vector3(transform.localScale.x, originalScaleY * crouchHeightMultiplier, transform.localScale.z);
-        }
-        else
-        {
-            playerCollider.height = originalHeight;
-            playerCollider.center = new Vector3(playerCollider.center.x, playerCollider.center.y, playerCollider.center.z);
-            transform.localScale = new Vector3(transform.localScale.x, originalScaleY, transform.localScale.z);
-        }
-    }
+    //private void ManageCrouch()
+    //{
+    //    if (Input.GetKey(crouchKey))
+    //    {
+    //        playerCollider.height = originalHeight * crouchHeightMultiplier;
+    //        playerCollider.center = new Vector3(playerCollider.center.x, playerCollider.center.y * 0.5f, playerCollider.center.z);
+    //        transform.localScale = new Vector3(transform.localScale.x, originalScaleY * crouchHeightMultiplier, transform.localScale.z);
+    //    }
+    //    else
+    //    {
+    //        playerCollider.height = originalHeight;
+    //        playerCollider.center = new Vector3(playerCollider.center.x, playerCollider.center.y, playerCollider.center.z);
+    //        transform.localScale = new Vector3(transform.localScale.x, originalScaleY, transform.localScale.z);
+    //    }
+    //}
 
     private void TurnOnTorchFire()
     {
