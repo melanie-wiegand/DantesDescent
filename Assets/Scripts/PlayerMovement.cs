@@ -74,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
         if (torchFireEffect != null)
         {
             torchFireEffect.SetActive(false);
-            Debug.Log("Torch flame effect assigned: " + torchFireEffect.name);
         }
 
         if (torchPromptText != null)
