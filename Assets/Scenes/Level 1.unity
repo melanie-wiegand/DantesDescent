@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.118385136, g: 0.18281671, b: 0.32881102, a: 1}
+  m_IndirectSpecularColor: {r: 0.11841433, g: 0.18280503, b: 0.32895905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -783,6 +783,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 367108135}
+    - target: {fileID: 7402652997055332998, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 164564792}
     - target: {fileID: 7402652997055332998, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: torchPromptText
       value: 

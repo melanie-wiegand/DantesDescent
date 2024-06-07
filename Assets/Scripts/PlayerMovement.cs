@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
-
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         playerCollider = GetComponent<CapsuleCollider>();
@@ -206,6 +206,16 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero; 
         }
+    }
+
+    public void Die()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        }
+        transform.rotation = Quaternion.Euler(270f, 0f, 0f);
+        animator.enabled = false;
     }
 
     private void RotateToCursor()

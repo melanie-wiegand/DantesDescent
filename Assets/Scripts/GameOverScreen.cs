@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class GameOverScreen : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class GameOverScreen : MonoBehaviour
     public IEnumerator ZJumpscare()
     {
         //StartCoroutine(Jumpscare());
-
+        playerMovement.Die();
         ZombieJumpscare.SetActive(true);
         yield return new WaitForSeconds(3);
         ZombieJumpscare.SetActive(false);
@@ -40,7 +41,7 @@ public class GameOverScreen : MonoBehaviour
     public IEnumerator WJumpscare()
     {
         //StartCoroutine(Jumpscare());
-
+        //playerMovement.Die();
         WolfJumpscare.SetActive(true);
         yield return new WaitForSeconds(3);
         WolfJumpscare.SetActive(false);
@@ -49,6 +50,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void ShowGameOver()
     {
+        playerMovement.Die();
         gameOverPanel.SetActive(true);
         statusBars.SetActive(false);
         playerMovement.canMove = false;
@@ -58,6 +60,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void ShowHungerLoss()
     {
+        playerMovement.Die();
         HungerScreen.SetActive(true);
         //statusBars.SetActive(false);
         playerMovement.canMove = false;
@@ -67,6 +70,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void ShowTempLoss()
     {
+        playerMovement.Die();
         TempScreen.SetActive(true);
         //statusBars.SetActive(false);
         playerMovement.canMove = false;
